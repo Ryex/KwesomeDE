@@ -46,9 +46,11 @@ function text:set_height(height)
 	self.forced_height = height
 end
 
-function text:set_halign(halign)
-	self.align = halign
-end
+--- self.align depricated and rempaed to halign 
+--- this remap causes recursion
+-- function text:set_halign(halign)
+-- 	self.align = halign
+-- end
 
 function text:set_font(font)
 	self._private.font = font
