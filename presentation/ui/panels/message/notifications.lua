@@ -49,8 +49,7 @@ local function notification_widget(notification, on_removed)
     {
         widget = wibox.container.place,
         halign = "left",
-        widgets.text
-        {
+        widgets.text {
             halign = helpers.string.contain_right_to_left_characters(notification.title) and "right" or "left",
             valign = "top",
             size = 15,
@@ -117,8 +116,7 @@ local function notification_widget(notification, on_removed)
     {
         widget = wibox.container.place,
         valign = "top",
-        widgets.button.text.normal
-        {
+        widgets.button.text.normal {
             forced_width = dpi(40),
             forced_height = dpi(40),
             margins = { left = dpi(10), bottom = dpi(10) },
@@ -268,16 +266,14 @@ local function new()
         {
             layout = wibox.layout.fixed.vertical,
             spacing = dpi(15),
-            widgets.text
-            {
+            widgets.text {
                 halign = "center",
                 size = 50,
                 color = beautiful.random_accent_color(),
                 font = beautiful.bell_icon.font,
                 text = beautiful.bell_icon.icon
             },
-            widgets.text
-            {
+            widgets.text {
                 halign = "center",
                 size = 15,
                 text = "No Notifications"
@@ -302,8 +298,7 @@ local function new()
     {
         widget = wibox.container.margin,
         margins = { top = dpi(250)},
-        widgets.spinning_circle
-        {
+        widgets.spinning_circle {
             forced_width = dpi(50),
             forced_height = dpi(50)
         }

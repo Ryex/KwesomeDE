@@ -109,8 +109,7 @@ function apps:new(id, key, command, class, args)
 
     awful.keyboard.append_global_keybindings
     ({
-        awful.key
-        {
+        awful.key {
             modifiers = args.scratchpad_modifiers,
             key = key,
             group = "apps",
@@ -123,8 +122,7 @@ function apps:new(id, key, command, class, args)
 
     awful.keyboard.append_global_keybindings
     ({
-        awful.key
-        {
+        awful.key {
             modifiers = args.launch_modifiers,
             key = key,
             group = "apps",

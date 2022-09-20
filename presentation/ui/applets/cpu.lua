@@ -79,16 +79,14 @@ local function new()
             {
                 layout  = wibox.layout.fixed.horizontal,
                 spacing = dpi(15),
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(70),
                     halign = "left",
                     bold = true,
                     color = beautiful.random_accent_color(),
                     text = "Core"
                 },
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(200),
                     halign = "left",
                     bold = true,
@@ -106,14 +104,12 @@ local function new()
             {
                 layout  = wibox.layout.fixed.horizontal,
                 spacing = dpi(15),
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(70),
                     halign = "left",
                     text = cpu.name,
                 },
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(60),
                     halign = "left",
                     text = math.floor(cpu.diff_usage) .. "%",
@@ -146,32 +142,28 @@ local function new()
             local header = wibox.widget
             {
                 layout  = wibox.layout.fixed.horizontal,
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(110),
                     halign = "left",
                     bold = true,
                     color = beautiful.random_accent_color(),
                     text = "PID"
                 },
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(210),
                     halign = "left",
                     bold = true,
                     color = beautiful.random_accent_color(),
                     text = "Name"
                 },
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(90),
                     halign = "left",
                     bold = true,
                     color = beautiful.random_accent_color(),
                     text = "%CPU"
                 },
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(70),
                     halign = "left",
                     bold = true,
@@ -189,32 +181,27 @@ local function new()
             local widget = wibox.widget
             {
                 layout  = wibox.layout.fixed.horizontal,
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(110),
                     halign = "left",
                     text = process.pid,
                 },
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(210),
                     halign = "left",
                     text = process.comm,
                 },
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(80),
                     halign = "left",
                     text = process.cpu,
                 },
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(80),
                     halign = "left",
                     text = process.mem,
                 },
-                widgets.button.text.normal
-                {
+                widgets.button.text.normal {
                     font = beautiful.xmark_icon.font,
                     size = 15,
                     text = beautiful.xmark_icon.icon,

@@ -279,8 +279,7 @@ local function new(args)
         widget = wibox.container.place,
         halign = "center",
         valign = "center",
-        widgets.spinning_circle
-        {
+        widgets.spinning_circle {
             forced_width = dpi(150),
             forced_height = dpi(150),
         }
@@ -291,8 +290,7 @@ local function new(args)
         widget = wibox.container.place,
         halign = "center",
         valign = "center",
-        widgets.text
-        {
+        widgets.text {
             halign = "center",
             size = 25,
             color = beautiful.colors.on_background,
@@ -423,8 +421,7 @@ local function new(args)
                 {
                     layout = wibox.layout.fixed.vertical,
                     spacing = dpi(8),
-                    widgets.text
-                    {
+                    widgets.text {
                         halign = "center",
                         color = beautiful.random_accent_color(),
                         size = 35,

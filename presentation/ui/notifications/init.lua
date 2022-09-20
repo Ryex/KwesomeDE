@@ -214,8 +214,7 @@ naughty.connect_signal("request::display", function(n)
         widget = wibox.container.scroll.horizontal,
         step_function = wibox.container.scroll.step_functions.waiting_nonlinear_back_and_forth,
         speed = 50,
-        widgets.text
-        {
+        widgets.text {
             size = 15,
             bold = true,
             text = n.title,
@@ -255,8 +254,7 @@ naughty.connect_signal("request::display", function(n)
             },
             scrollbar_width = dpi(10),
             scroll_speed = 3,
-            widgets.text
-            {
+            widgets.text {
                 size = 15,
                 text = n.message
             }

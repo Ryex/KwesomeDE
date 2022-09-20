@@ -6,7 +6,7 @@ local type = type
 local floor = math.floor
 local max = math.max
 local min = math.min
-local pow = math.pow
+--local pow = math.pow
 local random = math.random
 local abs = math.abs
 local format = string.format
@@ -90,8 +90,9 @@ end
 -- Calculates the relative luminance of the given color
 function _color.relative_luminance(color)
     local function from_sRGB(u)
-        return u <= 0.0031308 and 25 * u / 323 or
-                   pow(((200 * u + 11) / 211), 12 / 5)
+        return u <= 0.0031308 and 25 * u / 323 or ((200 * u + 11) / 211) ^ (12 / 5)
+        --pow(((200 * u + 11) / 211), 12 / 5)
+                   
     end
 
     color = color_libary.color { hex = color }

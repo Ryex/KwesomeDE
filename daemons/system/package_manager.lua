@@ -11,7 +11,7 @@ local helpers = require("helpers")
 local package_manager = { }
 local instance = nil
 
-local function apt()
+local function apt(self)
     awful.spawn.easy_async_with_shell("apt-cache stats", function(stdout)
         local packages_count = stdout:gsub("Total package names: (.*) ")
         self:emit_signal("update", packages_count)
@@ -34,7 +34,7 @@ local function new()
 
     awful.spawn.easy_async_with_shell('lsb_release -a | grep "Distributor ID:"', function(stdout)
         local distro = helpers.string.trim(stdout:match("Distributor ID:(.*)"))
-        if distro == "Arch" then
+        if distro == "Arch" or distro == "ManjaroLinux" then
             pacman(ret)
         elseif distro == "Ubuntu" or distro == "Debian" or distro == "PopOS" then
             apt(ret)

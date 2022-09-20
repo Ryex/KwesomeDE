@@ -1,4 +1,5 @@
---- @module Class providing the actual XML parser.
+--- @module xml
+-- Class providing the actual XML parser.
 --  Available options are:
 --      * stripWS
 --        Strip non-significant whitespace (leading/trailing)
@@ -169,8 +170,8 @@ local function parseTag(self, s)
             tag.attrs._ = 1
           end
 
-    string.gsub(s, self._ATTR1, parseFunction)
-    string.gsub(s, self._ATTR2, parseFunction)
+    _ = string.gsub(s, self._ATTR1, parseFunction)
+    _ = string.gsub(s, self._ATTR2, parseFunction)
 
     if tag.attrs._ then
         tag.attrs._ = nil

@@ -23,8 +23,7 @@ local function day_name_widget(name)
 		widget = wibox.container.background,
 		forced_width = dpi(35),
 		forced_height = dpi(35),
-		wtext
-		{
+		wtext {
 			halign = "center",
 			size = 15,
 			bold = true,
@@ -48,8 +47,7 @@ local function date_widget(date, is_current, is_another_month)
 		forced_height = dpi(35),
 		shape = gshape.circle,
 		bg = is_current and beautiful.random_accent_color() or beautiful.colors.transparent,
-		wtext
-		{
+		wtext {
 			halign = "center",
 			size = 15,
 			color = text_color,
@@ -128,8 +126,7 @@ local function new()
     local month = wibox.widget
     {
         layout = wibox.layout.align.horizontal,
-        wtbutton.normal
-        {
+        wtbutton.normal {
             forced_width = dpi(35),
             forced_height = dpi(35),
             font = beautiful.caret_left_icon.font,

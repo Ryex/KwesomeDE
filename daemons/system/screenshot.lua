@@ -114,7 +114,7 @@ local function new()
     ret._private.delay = settings:get_value("screenshot.delay") or 0
     ret._private.show_cursor = settings:get_value("screenshot.show_cursor") or false
     ret._private.folder = settings:get_value("screenshot.folder") or
-                                    "/home/" .. os.getenv("USER") .. "/Pictures/Screenshots/"
+                                    ("/home/" .. os.getenv("USER") .. "/Pictures/Screenshots/")
 
     return ret
 end

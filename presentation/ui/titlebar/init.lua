@@ -86,8 +86,7 @@ capi.client.connect_signal("request::titlebars", function(c)
             buttons =
             {
                 -- Move client
-                awful.button
-                {
+                awful.button {
                     modifiers = {  },
                     button = 1,
                     on_press = function()
@@ -97,8 +96,7 @@ capi.client.connect_signal("request::titlebars", function(c)
                 },
 
                 -- Kill client
-                awful.button
-                {
+                awful.button {
                     modifiers = {  },
                     button = 2,
                     on_press = function()
@@ -107,8 +105,7 @@ capi.client.connect_signal("request::titlebars", function(c)
                 },
 
                 -- Resize client
-                awful.button
-                {
+                awful.button {
                     modifiers = {  },
                     button = 3,
                     on_press = function()
@@ -118,8 +115,7 @@ capi.client.connect_signal("request::titlebars", function(c)
                 },
 
                 -- Side button up
-                awful.button
-                {
+                awful.button {
                     modifiers = {  },
                     button = 9,
                     on_press = function()
@@ -128,8 +124,7 @@ capi.client.connect_signal("request::titlebars", function(c)
                 },
 
                 -- Side button down
-                awful.button
-                {
+                awful.button {
                     modifiers = {  },
                     button = 8,
                     on_press = function()

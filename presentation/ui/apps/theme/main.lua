@@ -60,14 +60,12 @@ local function color_button(index)
     {
         layout = wibox.layout.fixed.vertical,
         spacing = dpi(15),
-        widgets.text
-        {
+        widgets.text {
             halign = "center",
             size = 12,
             text = index
         },
-        widgets.button.elevated.normal
-        {
+        widgets.button.elevated.normal {
             paddings = dpi(0),
             on_press = function()
                 theme_daemon:edit_color(index)
@@ -131,16 +129,14 @@ local function image_tab(self)
         {
             layout = wibox.layout.fixed.vertical,
             spacing = dpi(15),
-            widgets.text
-            {
+            widgets.text {
                 halign = "center",
                 size = 50,
                 color = beautiful.random_accent_color(),
                 font = beautiful.spraycan_icon.font,
                 text = beautiful.spraycan_icon.icon
             },
-            widgets.text
-            {
+            widgets.text {
                 halign = "center",
                 size = 15,
                 text = "It's empty out here ):"
@@ -153,8 +149,7 @@ local function image_tab(self)
         widget = wibox.container.place,
         halign = "center",
         valign = "center",
-        widgets.spinning_circle
-        {
+        widgets.spinning_circle {
             forced_width = dpi(250),
             forced_height = dpi(250),
             thickness = dpi(30)
@@ -168,8 +163,7 @@ local function image_tab(self)
         layout = widgets.overflow.vertical,
         forced_height = dpi(250),
         spacing = dpi(3),
-        scrollbar_widget =
-        {
+        scrollbar_widget = {
             widget = wibox.widget.separator,
             shape = helpers.ui.rrect(beautiful.border_radius),
             color = beautiful.colors.on_background

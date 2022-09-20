@@ -57,14 +57,12 @@ local function new()
     {
         layout = wibox.layout.fixed.horizontal,
         spacing = dpi(15),
-        widgets.text
-        {
+        widgets.text {
             color = beautiful.random_accent_color(),
             font = beautiful.clock_icon.font,
             text = beautiful.clock_icon.icon,
         },
-        widgets.text
-        {
+        widgets.text {
             size = 12,
             text = "0%",
         }
@@ -78,14 +76,12 @@ local function new()
     {
         layout = wibox.layout.fixed.horizontal,
         spacing = dpi(15),
-        widgets.text
-        {
+        widgets.text {
             color = beautiful.random_accent_color(),
             font = beautiful.box_icon.font,
             text = beautiful.box_icon.icon,
         },
-        widgets.text
-        {
+        widgets.text {
             size = 12,
             text = "0 Packages",
         }
@@ -100,8 +96,7 @@ local function new()
         layout = wibox.layout.fixed.horizontal,
         spacing = dpi(15),
         widgets.battery_icon(),
-        widgets.text
-        {
+        widgets.text {
             size = 12,
             text = "50 %",
         }

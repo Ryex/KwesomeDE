@@ -210,14 +210,12 @@ local function task_list_menu(client)
 
     return widgets.menu
     {
-        widgets.menu.button
-        {
+        widgets.menu.button {
             icon = client.font_icon,
             text = client.class,
             on_press = function() client:jump_to() end
         },
-        widgets.menu.button
-        {
+        widgets.menu.button {
             text = favorites_daemon:is_favorite(client.class) and "Unpin from taskbar" or "Pin to taskbar",
             on_press = function(self, text_widget)
                 favorites_daemon:toggle_favorite(client)
@@ -225,8 +223,7 @@ local function task_list_menu(client)
                 text_widget:set_text(text)
             end
         },
-        widgets.menu.sub_menu_button
-        {
+        widgets.menu.sub_menu_button {
             text = "Maximize",
             sub_menu = maximize_menu
         },
@@ -240,13 +237,11 @@ local function task_list_menu(client)
         client_checkbox_button(client, "sticky", "Sticky"),
         client_checkbox_button(client, "hidden", "Hidden"),
         client_checkbox_button(client, "floating", "Floating"),
-        widgets.menu.sub_menu_button
-        {
+        widgets.menu.sub_menu_button {
             text = "Layer",
             sub_menu = layer_menu
         },
-        widgets.menu.button
-        {
+        widgets.menu.button {
             text = "Close",
             on_press = function() client:kill() end
         },
@@ -268,14 +263,12 @@ local function favorite(layout, client, class)
 
     local menu = widgets.menu
     {
-        widgets.menu.button
-        {
+        widgets.menu.button {
             icon = client.font_icon,
             text = class,
             on_press = function() awful.spawn(client.command, false) end
         },
-        widgets.menu.button
-        {
+        widgets.menu.button {
             text = "Unpin from taskbar",
             on_press = function()
                 favorites_daemon:remove_favorite({class = class})

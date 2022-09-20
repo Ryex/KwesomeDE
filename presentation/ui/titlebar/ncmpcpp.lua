@@ -146,15 +146,13 @@ local function tabs_titlebar(c)
             {
                 layout = wibox.layout.fixed.horizontal,
                 spacing = dpi(15),
-                widgets.text
-                {
+                widgets.text {
                     size = 50,
                     color = accent_color,
                     font = beautiful.list_music_icon.font,
                     text = beautiful.list_music_icon.icon
                 },
-                widgets.text
-                {
+                widgets.text {
                     size = 25,
                     text = "Mopidy"
                 }

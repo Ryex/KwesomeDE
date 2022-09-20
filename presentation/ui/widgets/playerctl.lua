@@ -422,7 +422,8 @@ function playerctl.previous_play_next(daemon)
             layout = wibox.layout.fixed.horizontal,
             spacing = dpi(15),
             playerctl.previous(nil, nil, playerctl_daemon),
-            playerctl.play(nil, nil, playerctl_daemon),
+            --playerctl.play(nil, nil, playerctl_daemon),
+            playerctl.play(playerctl_daemon),
             playerctl.next(nil, nil, playerctl_daemon),
         }
     }

@@ -141,7 +141,7 @@ local function new()
     ret._private.delay = settings:get_value("record.delay") or 0
     ret._private.show_cursor = settings:get_value("record.show_cursor") or false
     ret._private.folder = settings:get_value("record.folder") or
-                                "/home/" .. os.getenv("USER") .. "/Recordings/"
+                                ("/home/" .. os.getenv("USER") .. "/Recordings/")
     ret._private.format = settings:get_value("record.format") or "mp4"
 
     ret._private.is_recording = false

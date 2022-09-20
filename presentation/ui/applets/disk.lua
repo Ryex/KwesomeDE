@@ -58,16 +58,14 @@ local function new()
     local header = wibox.widget
     {
         layout = wibox.layout.fixed.horizontal,
-        widgets.text
-        {
+        widgets.text {
             width = dpi(170),
             halign = "left",
             bold = true,
             color = beautiful.random_accent_color(),
             text = "Mount"
         },
-        widgets.text
-        {
+        widgets.text {
             halign = "left",
             bold = true,
             color = beautiful.random_accent_color(),
@@ -89,8 +87,7 @@ local function new()
             {
                 layout = wibox.layout.fixed.horizontal,
                 spacing = dpi(15),
-                widgets.text
-                {
+                widgets.text {
                     width = dpi(150),
                     halign = "left",
                     size = 12,
@@ -136,8 +133,7 @@ local function new()
         ontop = true,
         visible = false,
         shape = helpers.ui.rrect(beautiful.border_radius),
-        widget =
-        {
+        widget = {
             widget = wibox.container.margin,
             margins = dpi(25),
             {

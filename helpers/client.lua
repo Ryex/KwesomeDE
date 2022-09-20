@@ -43,7 +43,6 @@ function _client.move_to_edge(c, direction)
         awful.placement.top(c, {
             honor_padding = true,
             honor_workarea = true,
-            honor_padding = true
         })
         c.x = old_x
         -- c:geometry({ nil, y = workarea.y + beautiful.screen_margin * 2, nil, nil })
@@ -52,7 +51,6 @@ function _client.move_to_edge(c, direction)
         awful.placement.bottom(c, {
             honor_padding = true,
             honor_workarea = true,
-            honor_padding = true
         })
         c.x = old_x
         -- c:geometry({ nil, y = workarea.height + workarea.y - client_geometry.height - beautiful.screen_margin * 2 - beautiful.border_width * 2, nil, nil })
@@ -61,7 +59,6 @@ function _client.move_to_edge(c, direction)
         awful.placement.left(c, {
             honor_padding = true,
             honor_workarea = true,
-            honor_padding = true
         })
         c.y = old_y
         -- c:geometry({ x = workarea.x + beautiful.screen_margin * 2, nil, nil, nil })
@@ -70,7 +67,6 @@ function _client.move_to_edge(c, direction)
         awful.placement.right(c, {
             honor_padding = true,
             honor_workarea = true,
-            honor_padding = true
         })
         c.y = old_y
         -- c:geometry({ x = workarea.width + workarea.x - client_geometry.width - beautiful.screen_margin * 2 - beautiful.border_width * 2, nil, nil, nil })
