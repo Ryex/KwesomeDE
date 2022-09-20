@@ -54,6 +54,9 @@ local function new()
     local ret = gobject{}
     gtable.crush(ret, message_panel, true)
 
+    local notif = require(path .. ".notifications")
+    local em_gh_gl = require(path .. ".email_github_gitlab")
+
     ret.widget = awful.popup
     {
         type = "dock",
@@ -80,9 +83,9 @@ local function new()
             {
                 layout = wibox.layout.fixed.vertical,
                 spacing = dpi(30),
-                require(path .. ".notifications"),
+                notif,
                 separator(),
-                require(path .. ".email_github_gitlab")
+                em_gh_gl
             }
         }
     }

@@ -55,6 +55,11 @@ local function new()
     local ret = gobject{}
     gtable.crush(ret, action_panel, true)
 
+    local user = require(path .. ".user")
+    local system_control = require(path .. ".system_control")
+    local system_info = require(path .. ".system_info")
+    local playerctl = require(path .. ".playerctl")
+
     ret.widget = awful.popup
     {
         type = "dock",
@@ -88,13 +93,13 @@ local function new()
                 },
                 scrollbar_width = dpi(10),
                 step = 50,
-                require(path .. ".user"),
+                user,
                 separator(),
-                require(path .. ".system_control")(ret),
+                system_control(ret),
                 separator(),
-                require(path .. ".system_info")(ret),
+                system_info(ret),
                 separator(),
-                require(path .. ".playerctl"),
+                playerctl,
             }
         }
     }

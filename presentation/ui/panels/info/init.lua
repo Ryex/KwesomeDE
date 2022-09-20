@@ -39,6 +39,9 @@ local function new()
     local ret = gobject{}
     gtable.crush(ret, info_panel, true)
 
+    local calender = require(path .. ".calendar")
+    local weather = require(path .. ".weather")
+
     ret.widget = awful.popup
     {
         type = "dock",
@@ -65,8 +68,8 @@ local function new()
             {
                 layout = wibox.layout.flex.horizontal,
                 spacing = dpi(15),
-                require(path .. ".calendar"),
-                require(path .. ".weather")
+                calender,
+                weather
             }
         }
     }
