@@ -39,8 +39,7 @@ function audio:toggle(next_to)
 end
 
 local function separator()
-    return wibox.widget
-    {
+    return wibox.widget {
         widget = wibox.widget.separator,
         forced_width = dpi(1),
         forced_height = dpi(1),
@@ -63,8 +62,7 @@ local function application_widget(args)
     local icon = nil
     local font_icon = beautiful.get_font_icon_for_app_name(args.application.name)
     if font_icon == nil then
-        icon = wibox.widget
-        {
+        icon = wibox.widget {
             widget = wibox.widget.imagebox,
             halign = "center",
             valign = "center",
@@ -78,8 +76,7 @@ local function application_widget(args)
             }
         }
     else
-        icon = widgets.text
-        {
+        icon = widgets.text {
             size = 15,
             color = args.accent_color,
             font = font_icon.font,
@@ -87,15 +84,13 @@ local function application_widget(args)
         }
     end
 
-    local name = widgets.text
-    {
+    local name = widgets.text {
         halign = "left",
         size = 15,
         text = args.application.name
     }
 
-    local mute = widgets.button.text.state
-    {
+    local mute = widgets.button.text.state {
         on_by_default = args.application.mute,
         text_normal_bg = args.accent_color,
         on_normal_bg = args.accent_color,
@@ -109,8 +104,7 @@ local function application_widget(args)
         end
     }
 
-    local slider = widgets.slider
-    {
+    local slider = widgets.slider {
         forced_height = dpi(20),
         value = args.application.volume,
         maximum = 100,
@@ -123,8 +117,7 @@ local function application_widget(args)
         handle_shape = gshape.circle,
     }
 
-    local widget = wibox.widget
-    {
+    local widget = wibox.widget {
         widget = wibox.container.margin,
         margins = { right = dpi(10) },
         {
@@ -190,16 +183,14 @@ local function device_widget(args)
     args.on_removed_cb = args.on_removed_cb or nil
     args.accent_color = args.accent_color or nil
 
-    local name = widgets.text
-    {
+    local name = widgets.text {
         width = dpi(440),
         halign = "left",
         size = 12,
         text = args.device.description
     }
 
-    local mute = widgets.button.text.state
-    {
+    local mute = widgets.button.text.state {
         on_by_default = args.device.mute,
         text_normal_bg = args.accent_color,
         on_normal_bg = args.accent_color,
@@ -212,8 +203,7 @@ local function device_widget(args)
         end
     }
 
-    local default = widgets.button.text.state
-    {
+    local default = widgets.button.text.state {
         on_by_default = args.device.default,
         text_normal_bg = args.accent_color,
         on_normal_bg = args.accent_color,
@@ -226,8 +216,7 @@ local function device_widget(args)
         end
     }
 
-    local slider = widgets.slider
-    {
+    local slider = widgets.slider {
         forced_height = dpi(20),
         value = args.device.volume,
         maximum = 100,
@@ -240,8 +229,7 @@ local function device_widget(args)
         handle_shape = gshape.circle,
     }
 
-    local widget = wibox.widget
-    {
+    local widget = wibox.widget {
         widget = wibox.container.margin,
         margins = { right = dpi(10) },
         {
@@ -295,16 +283,14 @@ local function applications()
     local sink_inputs_accent_color = beautiful.random_accent_color()
     local sources_outputs_accent_color = beautiful.random_accent_color()
 
-    local sink_inputs_header = widgets.text
-    {
+    local sink_inputs_header = widgets.text {
         halign = "left",
         bold = true,
         color = sink_inputs_accent_color,
         text = "Sink Inputs"
     }
 
-    local sinks_inputs_layout = wibox.widget
-    {
+    local sinks_inputs_layout = wibox.widget {
         layout = widgets.overflow.vertical,
         forced_height = dpi(300),
         spacing = dpi(15),
@@ -317,16 +303,14 @@ local function applications()
         step = 50,
     }
 
-    local source_outputs_header = widgets.text
-    {
+    local source_outputs_header = widgets.text {
         halign = "left",
         bold = true,
         color = sources_outputs_accent_color,
         text = "Source Outputs"
     }
 
-    local source_outputs_layout = wibox.widget
-    {
+    local source_outputs_layout = wibox.widget {
         layout = widgets.overflow.vertical,
         forced_height = dpi(300),
         spacing = dpi(15),
@@ -340,8 +324,7 @@ local function applications()
     }
 
     pactl_daemon:connect_signal("sink_inputs::added", function(self, sink_input)
-        sinks_inputs_layout:add(application_widget
-        {
+        sinks_inputs_layout:add(application_widget {
             type = "sink_inputs",
             application = sink_input,
             on_mute_press = function()
@@ -358,8 +341,7 @@ local function applications()
     end)
 
     pactl_daemon:connect_signal("source_outputs::added", function(self, source_output)
-        source_outputs_layout:add(application_widget
-        {
+        source_outputs_layout:add(application_widget {
             type = "source_output",
             application = source_output,
             on_mute_press = function()
@@ -400,16 +382,14 @@ local function devices()
     local sinks_accent_color = beautiful.random_accent_color()
     local sources_accent_color = beautiful.random_accent_color()
 
-    local sinks_header = widgets.text
-    {
+    local sinks_header = widgets.text {
         halign = "left",
         bold = true,
         color = sinks_accent_color,
         text = "Sinks"
     }
 
-    local sinks_layout = wibox.widget
-    {
+    local sinks_layout = wibox.widget {
         layout = widgets.overflow.vertical,
         forced_height = dpi(300),
         spacing = dpi(15),
@@ -422,16 +402,14 @@ local function devices()
         step = 50,
     }
 
-    local sources_header = widgets.text
-    {
+    local sources_header = widgets.text {
         halign = "left",
         bold = true,
         color = sources_accent_color,
         text = "Sources"
     }
 
-    local sources_layout = wibox.widget
-    {
+    local sources_layout = wibox.widget {
         layout = widgets.overflow.vertical,
         forced_height = dpi(300),
         spacing = dpi(15),
@@ -445,8 +423,7 @@ local function devices()
     }
 
     pactl_daemon:connect_signal("sinks::added", function(self, sink)
-        sinks_layout:add(device_widget
-        {
+        sinks_layout:add(device_widget {
             type = "sinks",
             device = sink,
             on_mute_press = function()
@@ -466,8 +443,7 @@ local function devices()
     end)
 
     pactl_daemon:connect_signal("sources::added", function(self, source)
-        sources_layout:add(device_widget
-        {
+        sources_layout:add(device_widget {
             type = "sources",
             device = source,
             on_mute_press = function()
@@ -486,8 +462,7 @@ local function devices()
         })
     end)
 
-    return wibox.widget
-    {
+    return wibox.widget {
         layout = wibox.layout.fixed.vertical,
         spacing = dpi(30),
         {
@@ -513,8 +488,7 @@ local function widget()
     local _applications = applications()
     local _devices = devices()
 
-    local content = wibox.widget
-    {
+    local content = wibox.widget {
         layout = wibox.layout.stack,
         top_only = true,
         _devices,
@@ -524,8 +498,7 @@ local function widget()
     local devices_button = nil
     local applications_button = nil
 
-    devices_button = widgets.button.text.state
-    {
+    devices_button = widgets.button.text.state {
         on_by_default = true,
         size = 15,
         on_normal_bg = accent_color,
@@ -540,8 +513,7 @@ local function widget()
         end
     }
 
-    applications_button = widgets.button.text.state
-    {
+    applications_button = widgets.button.text.state {
         size = 15,
         on_normal_bg = accent_color,
         text_normal_bg = beautiful.colors.on_background,
@@ -555,8 +527,7 @@ local function widget()
         end
     }
 
-    return wibox.widget
-    {
+    return wibox.widget {
         layout = wibox.layout.fixed.vertical,
         spacing = dpi(10),
         {
@@ -575,8 +546,7 @@ local function new()
 
     ret._private = {}
 
-    ret.widget = awful.popup
-    {
+    ret.widget = awful.popup {
         bg = beautiful.colors.background,
         ontop = true,
         visible = false,

@@ -87,31 +87,27 @@ local function indicator(active)
 end
 
 local function last_page(on_next_pressed)
-    local icon = widgets.text
-    {
+    local icon = widgets.text {
         halign = "center",
         size = 120,
         font = beautiful.circle_check_icon.font,
         text = beautiful.circle_check_icon.icon
     }
 
-    local title = widgets.text
-    {
+    local title = widgets.text {
         halign = "center",
         size = 30,
         text = "Congratulations"
     }
 
-    local description = widgets.text
-    {
+    local description = widgets.text {
         halign = "center",
         size = 13,
         text = [[Your system is now ready to be used!
 For more information visit the following links.]],
     }
 
-    local github_link = widgets.button.text.normal
-    {
+    local github_link = widgets.button.text.normal {
         forced_width = dpi(300),
         animate_size = false,
         halign = "center",
@@ -123,8 +119,7 @@ For more information visit the following links.]],
         end,
     }
 
-    local reddit_link = widgets.button.text.normal
-    {
+    local reddit_link = widgets.button.text.normal {
         forced_width = dpi(300),
         animate_size = false,
         halign = "center",
@@ -136,8 +131,7 @@ For more information visit the following links.]],
         end,
     }
 
-    local awesome_link = widgets.button.text.normal
-    {
+    local awesome_link = widgets.button.text.normal {
         forced_width = dpi(300),
         animate_size = false,
         halign = "center",
@@ -149,21 +143,20 @@ For more information visit the following links.]],
         end,
     }
 
-    local finish_button = widgets.button.text.normal
-    {
+    local finish_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
         size = 13,
         text = "Finish",
         on_press = function()
+            print("WELCOME [fin]: nb on_press")
             settings:set_value("welcome.show", false)
             on_next_pressed()
         end,
     }
 
-    return wibox.widget
-    {
+    return wibox.widget {
         widget = wibox.container.margin,
         margins = dpi(15),
         {
@@ -200,23 +193,20 @@ For more information visit the following links.]],
 end
 
 local function weather_page(on_next_pressed, on_previous_pressed)
-    local icon = widgets.text
-    {
+    local icon = widgets.text {
         halign = "center",
         size = 120,
         font = beautiful.clouds_icon.font,
         text = beautiful.clouds_icon.icon
     }
 
-    local title = widgets.text
-    {
+    local title = widgets.text {
         halign = "center",
         size = 30,
         text = "Weather"
     }
 
-    local sign_up_open_weather_map = widgets.button.text.normal
-    {
+    local sign_up_open_weather_map = widgets.button.text.normal {
         halign = "center",
         size = 13,
         text_normal_bg = beautiful.colors.on_background,
@@ -226,8 +216,7 @@ local function weather_page(on_next_pressed, on_previous_pressed)
         end
     }
 
-    local visit_the_api_key_tab = widgets.button.text.normal
-    {
+    local visit_the_api_key_tab = widgets.button.text.normal {
         halign = "center",
         size = 13,
         text_normal_bg = beautiful.colors.on_background,
@@ -237,24 +226,21 @@ local function weather_page(on_next_pressed, on_previous_pressed)
         end
     }
 
-    local generate_key = widgets.button.text.normal
-    {
+    local generate_key = widgets.button.text.normal {
         halign = "center",
         size = 13,
         text_normal_bg = beautiful.colors.on_background,
         text = "3. Select a name for your key and click generate",
     }
 
-    local copy_and_paste_key = widgets.button.text.normal
-    {
+    local copy_and_paste_key = widgets.button.text.normal {
         halign = "center",
         size = 13,
         text_normal_bg = beautiful.colors.on_background,
         text = "4. Copy the generated key and paste it in the prompt below",
     }
 
-    local api_key_prompt = widgets.prompt
-    {
+    local api_key_prompt = widgets.prompt {
         forced_width = dpi(250),
         forced_height = dpi(50),
         reset_on_stop = false,
@@ -266,8 +252,7 @@ local function weather_page(on_next_pressed, on_previous_pressed)
         text_color = beautiful.colors.on_background,
     }
 
-    local coordinate_x_prompt = widgets.prompt
-    {
+    local coordinate_x_prompt = widgets.prompt {
         forced_width = dpi(250),
         forced_height = dpi(50),
         reset_on_stop = false,
@@ -279,8 +264,7 @@ local function weather_page(on_next_pressed, on_previous_pressed)
         text_color = beautiful.colors.on_background,
     }
 
-    local coordinate_y_prompt = widgets.prompt
-    {
+    local coordinate_y_prompt = widgets.prompt {
         forced_width = dpi(250),
         forced_height = dpi(50),
         reset_on_stop = false,
@@ -292,8 +276,7 @@ local function weather_page(on_next_pressed, on_previous_pressed)
         fg_cursor = beautiful.colors.on_background,
     }
 
-    local unit_dropdown = widgets.dropdown
-    {
+    local unit_dropdown = widgets.dropdown {
         forced_width = dpi(250),
         forced_height = dpi(50),
         prompt = "Unit: ",
@@ -309,8 +292,7 @@ local function weather_page(on_next_pressed, on_previous_pressed)
         end
     }
 
-    local back_button = widgets.button.text.normal
-    {
+    local back_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
@@ -321,14 +303,14 @@ local function weather_page(on_next_pressed, on_previous_pressed)
         end,
     }
 
-    local next_button = widgets.button.text.normal
-    {
+    local next_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
         size = 13,
         text = "Next",
         on_press = function()
+            print("WELCOME [weather]: nb on_press")
             weather_daemon:set_unit(unit_dropdown:get_value())
             weather_daemon:set_api_key(api_key_prompt:get_text())
             weather_daemon:set_coordinate_x(coordinate_x_prompt:get_text())
@@ -338,8 +320,7 @@ local function weather_page(on_next_pressed, on_previous_pressed)
         end,
     }
 
-    return wibox.widget
-    {
+    return wibox.widget {
         widget = wibox.container.margin,
         margins = dpi(15),
         {
@@ -409,23 +390,20 @@ local function weather_page(on_next_pressed, on_previous_pressed)
 end
 
 local function gitlab_page(on_next_pressed, on_previous_pressed)
-    local icon = widgets.text
-    {
+    local icon = widgets.text {
         halign = "center",
         size = 120,
         font = beautiful.gitlab_icon.font,
         text = beautiful.gitlab_icon.icon
     }
 
-    local title = widgets.text
-    {
+    local title = widgets.text {
         halign = "center",
         size = 30,
         text = "Gitlab"
     }
 
-    local login_on_gitlab = widgets.button.text.normal
-    {
+    local login_on_gitlab = widgets.button.text.normal {
         halign = "center",
         size = 13,
         text_normal_bg = beautiful.colors.on_background,
@@ -435,8 +413,7 @@ local function gitlab_page(on_next_pressed, on_previous_pressed)
         end
     }
 
-    local visit_access_tokens_tab = widgets.button.text.normal
-    {
+    local visit_access_tokens_tab = widgets.button.text.normal {
         halign = "center",
         size = 13,
         text_normal_bg = beautiful.colors.on_background,
@@ -446,32 +423,28 @@ local function gitlab_page(on_next_pressed, on_previous_pressed)
         end
     }
 
-    local enter_a_name_and_date = widgets.button.text.normal
-    {
+    local enter_a_name_and_date = widgets.button.text.normal {
         halign = "center",
         size = 13,
         text_normal_bg = beautiful.colors.on_background,
         text = "3. Enter a name and optional expiry date for the token.",
     }
 
-    local select_the_desired_scopes = widgets.button.text.normal
-    {
+    local select_the_desired_scopes = widgets.button.text.normal {
         halign = "center",
         size = 13,
         text_normal_bg = beautiful.colors.on_background,
         text = "4. Select the desired scopes.",
     }
 
-    local press_create_access_token = widgets.button.text.normal
-    {
+    local press_create_access_token = widgets.button.text.normal {
         halign = "center",
         size = 13,
         text_normal_bg = beautiful.colors.on_background,
         text = "5. Press Create personal access token.",
     }
 
-    local host_prompt = widgets.prompt
-    {
+    local host_prompt = widgets.prompt {
         forced_width = dpi(300),
         forced_height = dpi(50),
         reset_on_stop = false,
@@ -483,8 +456,7 @@ local function gitlab_page(on_next_pressed, on_previous_pressed)
         text_color = beautiful.colors.on_background,
     }
 
-    local access_token_prompt = widgets.prompt
-    {
+    local access_token_prompt = widgets.prompt {
         forced_width = dpi(300),
         forced_height = dpi(50),
         reset_on_stop = false,
@@ -496,8 +468,7 @@ local function gitlab_page(on_next_pressed, on_previous_pressed)
         text_color = beautiful.colors.on_background,
     }
 
-    local back_button = widgets.button.text.normal
-    {
+    local back_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
@@ -508,14 +479,14 @@ local function gitlab_page(on_next_pressed, on_previous_pressed)
         end,
     }
 
-    local next_button = widgets.button.text.normal
-    {
+    local next_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
         size = 13,
         text = "Next",
         on_press = function()
+            print("WELCOME [gitlab]: nb on_press")
             gitlab_daemon:set_access_token(access_token_prompt:get_text())
             gitlab_daemon:set_host(host_prompt:get_text())
             gitlab_daemon:refresh()
@@ -523,8 +494,7 @@ local function gitlab_page(on_next_pressed, on_previous_pressed)
         end,
     }
 
-    return wibox.widget
-    {
+    return wibox.widget {
         widget = wibox.container.margin,
         margins = dpi(15),
         {
@@ -579,30 +549,26 @@ local function gitlab_page(on_next_pressed, on_previous_pressed)
 end
 
 local function github_page(on_next_pressed, on_previous_pressed)
-    local icon = widgets.text
-    {
+    local icon = widgets.text {
         halign = "center",
         size = 120,
         font = beautiful.github_icon.font,
         text = beautiful.github_icon.icon
     }
 
-    local title = widgets.text
-    {
+    local title = widgets.text {
         halign = "center",
         size = 30,
         text = "Github"
     }
 
-    local description = widgets.text
-    {
+    local description = widgets.text {
         halign = "center",
         size = 13,
         text = "Please fill your GitHub username in order for the GitHub panel info to show.",
     }
 
-    local username_prompt = widgets.prompt
-    {
+    local username_prompt = widgets.prompt {
         forced_width = dpi(300),
         forced_height = dpi(50),
         reset_on_stop = false,
@@ -614,8 +580,7 @@ local function github_page(on_next_pressed, on_previous_pressed)
         text_color = beautiful.colors.on_background,
     }
 
-    local back_button = widgets.button.text.normal
-    {
+    local back_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
@@ -626,22 +591,21 @@ local function github_page(on_next_pressed, on_previous_pressed)
         end,
     }
 
-    local next_button = widgets.button.text.normal
-    {
+    local next_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
         size = 13,
         text = "Next",
         on_press = function()
+            print("WELCOME [github]: nb on_press")
             github_daemon:set_username(username_prompt:get_text())
             github_daemon:refresh()
             on_next_pressed()
         end,
     }
 
-    return wibox.widget
-    {
+    return wibox.widget {
         widget = wibox.container.margin,
         margins = dpi(15),
         {
@@ -686,30 +650,26 @@ local function github_page(on_next_pressed, on_previous_pressed)
 end
 
 local function email_page(on_next_pressed, on_previous_pressed)
-    local icon = widgets.text
-    {
+    local icon = widgets.text {
         halign = "center",
         size = 120,
         font = beautiful.envelope_icon.font,
         text = beautiful.envelope_icon.icon
     }
 
-    local title = widgets.text
-    {
+    local title = widgets.text {
         halign = "center",
         size = 30,
         text = "Email"
     }
 
-    local description = widgets.text
-    {
+    local description = widgets.text {
         halign = "center",
         size = 13,
         text = "Please fill your email info in order for the email panel info to show.",
     }
 
-    local machine_prompt = widgets.prompt
-    {
+    local machine_prompt = widgets.prompt {
         forced_width = dpi(300),
         forced_height = dpi(50),
         reset_on_stop = false,
@@ -721,8 +681,7 @@ local function email_page(on_next_pressed, on_previous_pressed)
         text_color = beautiful.colors.on_background,
     }
 
-    local login_prompt = widgets.prompt
-    {
+    local login_prompt = widgets.prompt {
         forced_width = dpi(300),
         forced_height = dpi(50),
         reset_on_stop = false,
@@ -734,8 +693,7 @@ local function email_page(on_next_pressed, on_previous_pressed)
         text_color = beautiful.colors.on_background,
     }
 
-    local password_prompt = widgets.prompt
-    {
+    local password_prompt = widgets.prompt {
         forced_width = dpi(300),
         forced_height = dpi(50),
         reset_on_stop = false,
@@ -747,8 +705,7 @@ local function email_page(on_next_pressed, on_previous_pressed)
         text_color = beautiful.colors.on_background,
     }
 
-    local back_button = widgets.button.text.normal
-    {
+    local back_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
@@ -759,21 +716,20 @@ local function email_page(on_next_pressed, on_previous_pressed)
         end,
     }
 
-    local next_button = widgets.button.text.normal
-    {
+    local next_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
         size = 13,
         text = "Next",
         on_press = function()
+            print("WELCOME [email]: nb on_press")
             email_daemon:update_net_rc(machine_prompt:get_text(), login_prompt:get_text(), password_prompt:get_text())
             on_next_pressed()
         end,
     }
 
-    return wibox.widget
-    {
+    return wibox.widget {
         widget = wibox.container.margin,
         margins = dpi(15),
         {
@@ -830,30 +786,26 @@ local function email_page(on_next_pressed, on_previous_pressed)
 end
 
 local function password_page(on_next_pressed, on_previous_pressed)
-    local icon = widgets.text
-    {
+    local icon = widgets.text {
         halign = "center",
         size = 120,
         font = beautiful.lock_icon.font,
         text = beautiful.lock_icon.icon
     }
 
-    local title = widgets.text
-    {
+    local title = widgets.text {
         halign = "center",
         size = 30,
         text = "Password"
     }
 
-    local description = widgets.text
-    {
+    local description = widgets.text {
         halign = "center",
         size = 13,
         text = "Please pick a password for the lock screen.",
     }
 
-    local password_prompt = widgets.prompt
-    {
+    local password_prompt = widgets.prompt {
         forced_width = dpi(300),
         forced_height = dpi(50),
         reset_on_stop = false,
@@ -865,8 +817,7 @@ local function password_page(on_next_pressed, on_previous_pressed)
         text_color = beautiful.colors.on_background,
     }
 
-    local back_button = widgets.button.text.normal
-    {
+    local back_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
@@ -877,21 +828,20 @@ local function password_page(on_next_pressed, on_previous_pressed)
         end,
     }
 
-    local next_button = widgets.button.text.normal
-    {
+    local next_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
         size = 13,
         text = "Next",
         on_press = function()
+            print("WELCOME [password]: nb on_press")
             system_daemon:set_password(password_prompt:get_text())
             on_next_pressed()
         end,
     }
 
-    return wibox.widget
-    {
+    return wibox.widget {
         widget = wibox.container.margin,
         margins = dpi(15),
         {
@@ -937,8 +887,7 @@ end
 
 local function welcome_page(on_next_pressed, on_previous_pressed)
     local function picture(value)
-        return wibox.widget
-        {
+        return wibox.widget {
             widget = wibox.widget.imagebox,
             forced_width = dpi(260),
             forced_height = dpi(100),
@@ -948,8 +897,7 @@ local function welcome_page(on_next_pressed, on_previous_pressed)
         }
     end
 
-    local icon = wibox.widget
-    {
+    local icon = wibox.widget {
         widget = wibox.widget.imagebox,
         halign = "center",
         forced_height = dpi(140),
@@ -957,15 +905,13 @@ local function welcome_page(on_next_pressed, on_previous_pressed)
         image = beautiful.profile_icon,
     }
 
-    local title = widgets.text
-    {
+    local title = widgets.text {
         halign = "center",
         size = 25,
         text = "Hi " .. os.getenv("USER"):upper() .. ", Welcome to KwesomeDE!"
     }
 
-    local pictures = wibox.widget
-    {
+    local pictures = wibox.widget {
         layout = wibox.layout.grid,
         forced_num_rows = 4,
         forced_num_cols = 2,
@@ -980,8 +926,7 @@ local function welcome_page(on_next_pressed, on_previous_pressed)
         picture(8),
     }
 
-    local quit_button = widgets.button.text.normal
-    {
+    local quit_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
@@ -992,20 +937,19 @@ local function welcome_page(on_next_pressed, on_previous_pressed)
         end,
     }
 
-    local next_button = widgets.button.text.normal
-    {
+    local next_button = widgets.button.text.normal {
         animate_size = false,
         halign = "center",
         text_normal_bg = accent_color,
         size = 13,
         text = "Next",
         on_press = function()
+            print("WELCOME [welcome]: nb on_press")
             on_next_pressed()
         end,
     }
 
-    return wibox.widget
-    {
+    return wibox.widget {
         widget = wibox.container.margin,
         margins = dpi(15),
         {
@@ -1054,53 +998,65 @@ local function widget(self)
     local _last_page = {}
 
     _welcome_page = welcome_page(function()
+        print("WELCOME: welcome page next")
         stack:raise_widget(_password_page)
     end,
     function()
+        print("WELCOME: welcome page previous")
         self:hide()
     end)
 
     _password_page = password_page(function()
+        print("WELCOME: password page next")
         stack:raise_widget(_email_page)
     end,
     function()
+        print("WELCOME: password page previous")
         stack:raise_widget(_welcome_page)
     end)
 
     _email_page = email_page(function()
+        print("WELCOME: email page next")
         stack:raise_widget(_github_page)
     end,
     function()
+        print("WELCOME: email page previous")
         stack:raise_widget(_password_page)
     end)
 
     _github_page = github_page(function()
+        print("WELCOME: github page next")
         stack:raise_widget(_gitlab_page)
     end,
     function()
+        print("WELCOME: github page previous")
         stack:raise_widget(_email_page)
     end)
 
     _gitlab_page = gitlab_page(function()
+        print("WELCOME: gitlab page next")
         stack:raise_widget(_weather_page)
     end,
     function()
+        print("WELCOME: gitlab page previous")
         stack:raise_widget(_github_page)
     end)
 
     _weather_page = weather_page(function()
+        print("WELCOME: weather page next")
         stack:raise_widget(_last_page)
     end,
     function()
+        print("WELCOME: weather page previous")
         stack:raise_widget(_gitlab_page)
     end)
 
     _last_page = last_page(function()
+        print("WELCOME: last page finish")
         self:hide()
     end)
 
-    stack = wibox.widget
-    {
+    stack = wibox.widget {
         layout = wibox.layout.stack,
         top_only = true,
         _welcome_page,

@@ -17,8 +17,7 @@ local instance = nil
 local function new()
     local ret = {}
 
-    local icon = widgets.text
-    {
+    local icon = widgets.text {
         halign = "center",
         valign = "bottom",
         font = beautiful.keyboard_icon.font,
@@ -27,23 +26,20 @@ local function new()
         text = beautiful.keyboard_icon.icon,
     }
 
-    local text = widgets.text
-    {
+    local text = widgets.text {
         halign = "center",
         valign = "bottom",
         size = 15
     }
 
-    local hide_timer = gtimer
-    {
+    local hide_timer = gtimer {
         timeout = 1,
         callback = function()
             ret.widget.visible = false
         end
     }
 
-    ret.widget = awful.popup
-    {
+    ret.widget = awful.popup {
         type = "notification",
         screen = awful.screen.focused(),
         visible = false,
