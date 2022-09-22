@@ -18,6 +18,7 @@
 ---  @submodule dbus_proxy
 local string = string
 local table = table
+--- @diagnostic disable-next-line:deprecated
 local unpack = unpack or table.unpack -- luacheck: globals unpack
 
 local lgi = require("lgi")
@@ -400,7 +401,7 @@ end
 local function generate_fields(proxy)
   local xml_data_str, err = introspect(proxy)
 
-  if not xml_data_str then
+  if err ~= nil then
     error(
       string.format(
         "Failed to introspect object '%s'\nerror: %s\ncode: %s",

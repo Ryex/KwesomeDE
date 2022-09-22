@@ -93,6 +93,7 @@ local function new()
     if package.loaded["liblua_pam"] then
         ret._private.is_pam_installed = true
     else
+        ---@diagnostic disable-next-line:deprecated
         for _, searcher in ipairs(package.searchers or package.loaders) do
             local loader = searcher("liblua_pam")
             if type(loader) == 'function' then

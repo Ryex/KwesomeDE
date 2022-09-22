@@ -304,7 +304,7 @@ function widget.new(args)
         else
             self._colors_counter[id] = 1
         end
-        return self.label_colors["color"..tostring(self._colors_counter[id], 15)]
+        return self.label_colors["color"..tostring(self._colors_counter[id])]
     end
 
 
