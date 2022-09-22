@@ -1,4 +1,4 @@
---- @module xml
+--- @module 'xml'
 -- Class providing the actual XML parser.
 --  Available options are:
 --      * stripWS
