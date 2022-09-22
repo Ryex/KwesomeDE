@@ -2,12 +2,13 @@
 -- @author https://github.com/Kasper24
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
-
+print("LOADING [DAEMONS system.favorites]: Getting awful, gears.[object, table, string]")
 local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gstring = require("gears.string")
 
+print("LOADING [DAEMONS system.fortune]: Defining")
 local fortune = { }
 local instance = nil
 
@@ -31,6 +32,9 @@ local function new()
 end
 
 if not instance then
+    print("LOADING [DAEMONS system.fortune]: No instance, calling new()")
     instance = new()
 end
+
+print("LOADING [DAEMONS system.fortune]: DONE")
 return instance

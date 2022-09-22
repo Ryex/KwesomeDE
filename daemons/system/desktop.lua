@@ -2,18 +2,24 @@
 -- @author https://github.com/Kasper24
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
-
+print("LOADING [DAEMONS system.desktop]: Getting lgi.Gio")
 local Gio = require("lgi").Gio
+print("LOADING [DAEMONS system.desktop]: Getting awful, gears.[object, table]")
 local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local helpers = require("helpers")
+
+print("LOADING [DAEMONS system.desktop]: Getting 'services.inotify'")
 local inotify = require("services.inotify")
 local ipairs = ipairs
 local pairs = pairs
 local os = os
+
+
 local capi = { screen = screen }
 
+print("LOADING [DAEMONS system.desktop]: Defining")
 local desktop = { }
 local instance = nil
 
@@ -197,6 +203,9 @@ local function new()
 end
 
 if not instance then
+    print("LOADING [DAEMONS system.desktop]: No instance, calling new()")
     instance = new()
 end
+
+print("LOADING [DAEMONS system.desktop]: DONE")
 return instance

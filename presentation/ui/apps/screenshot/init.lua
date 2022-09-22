@@ -2,17 +2,21 @@
 -- @author https://github.com/Kasper24
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
-
+print("LOADING [PRESENTATION ui.apps.screenshot]: Getting awful, gears.[object, table]")
 local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
+print("LOADING [PRESENTATION ui.apps.screenshot]: Getting ruled, wibox, beautiful")
 local ruled = require("ruled")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+print("LOADING [PRESENTATION ui.apps.screenshot]: Getting 'daemons.system.screenshot'")
 local screenshot_daemon = require("daemons.system.screenshot")
+print("LOADING [PRESENTATION ui.apps.screenshot]: Getting 'helpers'")
 local helpers = require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 
+print("LOADING [PRESENTATION ui.apps.screenshot]: Defining")
 local screenshot = { }
 local instance = nil
 
@@ -78,8 +82,12 @@ local function new()
 
     local stack = wibox.layout.stack()
     stack:set_top_only(true)
-    stack:add(require(path .. ".main")(ret, stack))
-    stack:add(require(path .. ".settings")(stack))
+
+    local main = require(path .. ".main")
+    local settings = require(path .. ".settings")
+
+    stack:add(main(ret, stack))
+    stack:add(settings(stack))
 
     ruled.client.connect_signal("request::rules", function()
         ruled.client.append_rule
@@ -135,6 +143,9 @@ local function new()
 end
 
 if not instance then
+    print("LOADING [PRESENTATION ui.apps.screenshot]: No instance, calling new()")
     instance = new()
 end
+
+print("LOADING [PRESENTATION ui.apps.screenshot]: DONE")
 return instance

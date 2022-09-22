@@ -4,11 +4,14 @@
 -------------------------------------------
 
 local wibox = require("wibox")
+print("LOADING [PRESENTATION ui.apps.screenshot]: Getting 'presentation.ui.widgets'")
 local widgets = require("presentation.ui.widgets")
 local beautiful = require("beautiful")
+print("LOADING [PRESENTATION ui.apps.screenshot.main]: Getting 'daemons.system.screenshot'")
 local screenshot_daemon = require("daemons.system.screenshot")
 local dpi = beautiful.xresources.apply_dpi
 
+print("LOADING [PRESENTATION ui.apps.screenshot.main]: Defining")
 local main = { mt = {} }
 
 local function button(icon, text, on_release, on_by_default)
@@ -185,5 +188,7 @@ end
 function main.mt:__call(self, layout)
     return new(self, layout)
 end
+
+print("LOADING [PRESENTATION ui.apps.screenshot.main]: DONE")
 
 return setmetatable(main, main.mt)
