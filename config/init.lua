@@ -3,19 +3,21 @@
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
 
-print("LOADING [CONFIG]: Running '.startup'")
-require(... .. ".startup")
-print("LOADING [CONFIG]: Running '.apps'") -- pause
-require(... .. ".apps")
-print("LOADING [CONFIG]: Running '.layouts'")
-require(... .. ".layouts")
-print("LOADING [CONFIG]: Running '.tags'")
-require(... .. ".tags")
-print("LOADING [CONFIG]: Running '.keys'") -- BIG pause
-require(... .. ".keys")
-print("LOADING [CONFIG]: Running '.rules'")
-require(... .. ".rules")
-print("LOADING [CONFIG]: Running '.ranger'")
-require(... .. ".ranger")
+local timed_load = require('timed_load')
 
-print("LOADING [CONFIG]: DONE")
+--print("LOADING [CONFIG]: Running '.startup'")
+timed_load:require(... .. ".startup")
+--print("LOADING [CONFIG]: Running '.apps'") -- pause
+timed_load:require(... .. ".apps")
+--print("LOADING [CONFIG]: Running '.layouts'")
+timed_load:require(... .. ".layouts")
+--print("LOADING [CONFIG]: Running '.tags'")
+timed_load:require(... .. ".tags")
+--print("LOADING [CONFIG]: Running '.keys'") -- BIG pause
+timed_load:require(... .. ".keys")
+--print("LOADING [CONFIG]: Running '.rules'")
+timed_load:require(... .. ".rules")
+--print("LOADING [CONFIG]: Running '.ranger'")
+timed_load:require(... .. ".ranger")
+
+--print("LOADING [CONFIG]: DONE")

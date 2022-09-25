@@ -6,10 +6,13 @@
 local awful = require("awful")
 local gtimer = require("gears.timer")
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
 local beautiful = require("beautiful")
-local brightness_daemon = require("daemons.system.brightness")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
+local brightness_daemon = timed_load:require("daemons.system.brightness")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 
 local instance = nil

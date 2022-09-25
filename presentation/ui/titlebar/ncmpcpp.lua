@@ -5,11 +5,14 @@
 
 local awful = require("awful")
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
 local ruled = require("ruled")
 local beautiful = require("beautiful")
 local bling = require("modules.bling")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 
 local function tabs_titlebar(c)

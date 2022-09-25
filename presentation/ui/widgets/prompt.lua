@@ -10,8 +10,11 @@ local gcolor = require("gears.color")
 local gstring = require("gears.string")
 local gtimer = require("gears.timer")
 local wibox = require("wibox")
-local ebutton = require("presentation.ui.widgets.button.elevated")
 local beautiful = require("beautiful")
+
+local timed_load = require('timed_load')
+
+local ebutton = timed_load:require("presentation.ui.widgets.button.elevated")
 local tostring = tostring
 local ipairs = ipairs
 local string = string

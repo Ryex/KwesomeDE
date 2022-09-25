@@ -7,7 +7,10 @@ local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local helpers = timed_load:require("helpers")
 local tonumber = tonumber
 local string = string
 

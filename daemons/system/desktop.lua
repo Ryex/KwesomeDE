@@ -2,16 +2,19 @@
 -- @author https://github.com/Kasper24
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
-print("LOADING [DAEMONS system.desktop]: Getting lgi.Gio")
+--print("LOADING [DAEMONS system.desktop]: Getting lgi.Gio")
 local Gio = require("lgi").Gio
-print("LOADING [DAEMONS system.desktop]: Getting awful, gears.[object, table]")
+--print("LOADING [DAEMONS system.desktop]: Getting awful, gears.[object, table]")
 local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
-local helpers = require("helpers")
 
-print("LOADING [DAEMONS system.desktop]: Getting 'services.inotify'")
-local inotify = require("services.inotify")
+local timed_load = require('timed_load')
+
+local helpers = timed_load:require("helpers")
+
+--print("LOADING [DAEMONS system.desktop]: Getting 'services.inotify'")
+local inotify = timed_load:require("services.inotify")
 local ipairs = ipairs
 local pairs = pairs
 local os = os
@@ -19,7 +22,7 @@ local os = os
 
 local capi = { screen = screen }
 
-print("LOADING [DAEMONS system.desktop]: Defining")
+--print("LOADING [DAEMONS system.desktop]: Defining")
 local desktop = { }
 local instance = nil
 
@@ -38,6 +41,11 @@ local function get_grid_pos_from_real_pos(self, pos)
 end
 
 function desktop:ask_for_new_position(widget, path)
+
+    if widget.pos_before_move == nil then
+        widget.pos_before_move = { x = widget.x, y = widget.y }
+    end
+
     local new_x = helpers.misc.round_by_factor(widget.x, self._private.cell_size)
     local new_y = helpers.misc.round_by_factor(widget.y, self._private.cell_size)
 
@@ -203,9 +211,9 @@ local function new()
 end
 
 if not instance then
-    print("LOADING [DAEMONS system.desktop]: No instance, calling new()")
+    --print("LOADING [DAEMONS system.desktop]: No instance, calling new()")
     instance = new()
 end
 
-print("LOADING [DAEMONS system.desktop]: DONE")
+--print("LOADING [DAEMONS system.desktop]: DONE")
 return instance

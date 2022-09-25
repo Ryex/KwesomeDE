@@ -8,7 +8,10 @@ local gobject = require("gears.object")
 local gtable = require("gears.table")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local capi = { screen = screen }
 
@@ -54,8 +57,8 @@ local function new()
     local ret = gobject{}
     gtable.crush(ret, message_panel, true)
 
-    local notif = require(path .. ".notifications")
-    local em_gh_gl = require(path .. ".email_github_gitlab")
+    local notif = timed_load:require(path .. ".notifications")
+    local em_gh_gl = timed_load:require(path .. ".email_github_gitlab")
 
     ret.widget = awful.popup
     {

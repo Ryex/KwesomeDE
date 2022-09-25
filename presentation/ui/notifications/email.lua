@@ -5,7 +5,10 @@
 
 local beautiful = require("beautiful")
 local naughty = require("naughty")
-local email_daemon = require("daemons.web.email")
+
+local timed_load = require('timed_load')
+
+local email_daemon = timed_load:require("daemons.web.email")
 local type = type
 
 local icons =

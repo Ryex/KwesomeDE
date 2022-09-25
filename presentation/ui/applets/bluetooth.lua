@@ -8,11 +8,14 @@ local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
 local beautiful = require("beautiful")
-local bluetooth_daemon = require("daemons.hardware.bluetooth")
-local helpers = require("helpers")
-local icon_theme = require("services.icon_theme")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
+local bluetooth_daemon = timed_load:require("daemons.hardware.bluetooth")
+local helpers = timed_load:require("helpers")
+local icon_theme = timed_load:require("services.icon_theme")
 local dpi = beautiful.xresources.apply_dpi
 local capi = { awesome = awesome }
 

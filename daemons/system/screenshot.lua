@@ -2,18 +2,21 @@
 -- @author https://github.com/Kasper24
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
-print("LOADING [DAEMONS system.screenshot]: Getting awful, gears.[object, table, timer]")
+--print("LOADING [DAEMONS system.screenshot]: Getting awful, gears.[object, table, timer]")
 local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
-print("LOADING [DAEMONS system.screenshot]: Getting 'services.settings'")
-local settings = require("services.settings")
-print("LOADING [DAEMONS system.screenshot]: Getting 'helpers'")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+--print("LOADING [DAEMONS system.screenshot]: Getting 'services.settings'")
+local settings = timed_load:require("services.settings")
+--print("LOADING [DAEMONS system.screenshot]: Getting 'helpers'")
+local helpers = timed_load:require("helpers")
 local os = os
 
-print("LOADING [DAEMONS system.screenshot]: Defining")
+--print("LOADING [DAEMONS system.screenshot]: Defining")
 local screenshot = { }
 local instance = nil
 
@@ -123,9 +126,9 @@ local function new()
 end
 
 if not instance then
-    print("LOADING [DAEMONS system.screenshot]: No instance, calling new()")
+    --print("LOADING [DAEMONS system.screenshot]: No instance, calling new()")
     instance = new()
 end
 
-print("LOADING [DAEMONS system.screenshot]: DONE")
+--print("LOADING [DAEMONS system.screenshot]: DONE")
 return instance

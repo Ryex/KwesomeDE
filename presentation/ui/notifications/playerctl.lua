@@ -5,7 +5,10 @@
 
 local beautiful = require("beautiful")
 local naughty = require("naughty")
-local playerctl_daemon = require("daemons.system.playerctl")
+
+local timed_load = require('timed_load')
+
+local playerctl_daemon = timed_load:require("daemons.system.playerctl")
 local string = string
 
 playerctl_daemon:connect_signal("metadata", function(self, title, artist, album_path, album, new, player_name)

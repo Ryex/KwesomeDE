@@ -2,7 +2,7 @@
 -- @author https://github.com/Kasper24
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
-print("LOADING [DAEMONS system.notifications]: Getting awful, gears.[object, table, timer, string]")
+--print("LOADING [DAEMONS system.notifications]: Getting awful, gears.[object, table, timer, string]")
 local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
@@ -11,15 +11,17 @@ local gstring = require("gears.string")
 local wibox = require("wibox")
 local naughty = require("naughty")
 
-print("LOADING [DAEMONS system.notifications]: Getting 'services.settings'")
-local settings = require("services.settings")
-print("LOADING [DAEMONS system.notifications]: Getting 'helpers'")
-local helpers = require("helpers")
+local timed_load = require('timed_load')
+
+--print("LOADING [DAEMONS system.notifications]: Getting 'services.settings'")
+local settings = timed_load:require("services.settings")
+--print("LOADING [DAEMONS system.notifications]: Getting 'helpers'")
+local helpers = timed_load:require("helpers")
 local ipairs = ipairs
 local table  = table
 local os = os
 
-print("LOADING [DAEMONS system.notifications]: Defining")
+--print("LOADING [DAEMONS system.notifications]: Defining")
 local notifications = { }
 local instance = nil
 
@@ -199,9 +201,9 @@ local function new()
 end
 
 if not instance then
-    print("LOADING [DAEMONS system.notifications]: No instance, calling new()")
+    --print("LOADING [DAEMONS system.notifications]: No instance, calling new()")
     instance = new()
 end
 
-print("LOADING [DAEMONS system.notifications]: DONE")
+--print("LOADING [DAEMONS system.notifications]: DONE")
 return instance

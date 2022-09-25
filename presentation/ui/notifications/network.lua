@@ -5,8 +5,11 @@
 
 local beautiful = require("beautiful")
 local naughty = require("naughty")
-local network_daemon = require("daemons.hardware.network")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local network_daemon = timed_load:require("daemons.hardware.network")
+local helpers = timed_load:require("helpers")
 
 local icons =
 {

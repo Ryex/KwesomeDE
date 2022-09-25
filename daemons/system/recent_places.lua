@@ -5,8 +5,11 @@
 
 local gobject = require("gears.object")
 local gtable = require("gears.table")
-local inotify = require("services.inotify")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local inotify = timed_load:require("services.inotify")
+local helpers = timed_load:require("helpers")
 local string = string
 local table = table
 local os = os

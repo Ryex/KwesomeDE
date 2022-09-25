@@ -6,23 +6,25 @@
 local gcolor = require("gears.color")
 local beautiful = require("beautiful")
 
-print("LOADING [THEME]: Getting 'daemons.system.theme'")
-local theme_daemon = require("daemons.system.theme")
+local timed_load = require('timed_load')
 
-print("LOADING [THEME]: Getting 'services.settings'")
-local settings = require("services.settings")
+--print("LOADING [THEME]: Getting 'daemons.system.theme'")
+local theme_daemon = timed_load:require("daemons.system.theme")
 
-print("LOADING [THEME]: Getting 'modules.color'")
+--print("LOADING [THEME]: Getting 'services.settings'")
+local settings = timed_load:require("services.settings")
+
+--print("LOADING [THEME]: Getting 'modules.color'")
 local color_libary = require("modules.color")
 
-print("LOADING [THEME]: Getting 'helpers'")
-local helpers = require("helpers")
+--print("LOADING [THEME]: Getting 'helpers'")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local math = math
 
 local theme = {}
 
-print("LOADING [THEME]: Defining Theme")
+--print("LOADING [THEME]: Defining Theme")
 
 local function colors()
     local colors = theme_daemon:get_colorscheme()
@@ -554,6 +556,6 @@ task_preview()
 window_switcher()
 machi()
 
-print("LOADING [THEME]: DONE")
+--print("LOADING [THEME]: DONE")
 
 return theme

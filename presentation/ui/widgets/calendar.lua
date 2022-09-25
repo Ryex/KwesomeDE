@@ -7,10 +7,14 @@ local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gshape = require("gears.shape")
 local wibox = require("wibox")
-local wtext = require("presentation.ui.widgets.text")
-local wtbutton = require("presentation.ui.widgets.button.text")
 local beautiful = require("beautiful")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local wtext = timed_load:require("presentation.ui.widgets.text")
+local wtbutton = timed_load:require("presentation.ui.widgets.button.text")
+
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 local os = os

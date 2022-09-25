@@ -7,9 +7,12 @@ local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
-local helpers = require("helpers")
-local xml = require("helpers.xml")
-local handler = require("helpers.xml.tree")
+
+local timed_load = require('timed_load')
+
+local helpers = timed_load:require("helpers")
+local xml = timed_load:require("helpers.xml")
+local handler = timed_load:require("helpers.xml.tree")
 local ipairs = ipairs
 
 local email = { }

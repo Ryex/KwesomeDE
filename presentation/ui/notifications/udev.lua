@@ -6,7 +6,10 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
-local udev_daemon = require("daemons.hardware.udev")
+
+local timed_load = require('timed_load')
+
+local udev_daemon = timed_load:require("daemons.hardware.udev")
 
 local usb_icons =
 {

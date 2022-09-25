@@ -6,10 +6,13 @@
 local gstring = require("gears.string")
 local gtimer = require("gears.timer")
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
 local beautiful = require("beautiful")
-local notifications_daemon = require("daemons.system.notifications")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
+local notifications_daemon = timed_load:require("daemons.system.notifications")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local collectgarbage = collectgarbage
 local setmetatable = setmetatable

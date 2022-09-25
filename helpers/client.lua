@@ -35,43 +35,43 @@ function _client.maximize(c)
     c:raise()
 end
 
-function _client.move_to_edge(c, direction)
-    -- local workarea = awful.screen.focused().workarea
-    -- local client_geometry = c:geometry()
-    if direction == "up" then
-        local old_x = c:geometry().x
-        awful.placement.top(c, {
-            honor_padding = true,
-            honor_workarea = true,
-        })
-        c.x = old_x
-        -- c:geometry({ nil, y = workarea.y + beautiful.screen_margin * 2, nil, nil })
-    elseif direction == "down" then
-        local old_x = c:geometry().x
-        awful.placement.bottom(c, {
-            honor_padding = true,
-            honor_workarea = true,
-        })
-        c.x = old_x
-        -- c:geometry({ nil, y = workarea.height + workarea.y - client_geometry.height - beautiful.screen_margin * 2 - beautiful.border_width * 2, nil, nil })
-    elseif direction == "left" then
-        local old_y = c:geometry().y
-        awful.placement.left(c, {
-            honor_padding = true,
-            honor_workarea = true,
-        })
-        c.y = old_y
-        -- c:geometry({ x = workarea.x + beautiful.screen_margin * 2, nil, nil, nil })
-    elseif direction == "right" then
-        local old_y = c:geometry().y
-        awful.placement.right(c, {
-            honor_padding = true,
-            honor_workarea = true,
-        })
-        c.y = old_y
-        -- c:geometry({ x = workarea.width + workarea.x - client_geometry.width - beautiful.screen_margin * 2 - beautiful.border_width * 2, nil, nil, nil })
-    end
-end
+-- function _client.move_to_edge(c, direction)
+--     -- local workarea = awful.screen.focused().workarea
+--     -- local client_geometry = c:geometry()
+--     if direction == "up" then
+--         local old_x = c:geometry().x
+--         awful.placement.top(c, {
+--             honor_padding = true,
+--             honor_workarea = true,
+--         })
+--         c.x = old_x
+--         -- c:geometry({ nil, y = workarea.y + beautiful.screen_margin * 2, nil, nil })
+--     elseif direction == "down" then
+--         local old_x = c:geometry().x
+--         awful.placement.bottom(c, {
+--             honor_padding = true,
+--             honor_workarea = true,
+--         })
+--         c.x = old_x
+--         -- c:geometry({ nil, y = workarea.height + workarea.y - client_geometry.height - beautiful.screen_margin * 2 - beautiful.border_width * 2, nil, nil })
+--     elseif direction == "left" then
+--         local old_y = c:geometry().y
+--         awful.placement.left(c, {
+--             honor_padding = true,
+--             honor_workarea = true,
+--         })
+--         c.y = old_y
+--         -- c:geometry({ x = workarea.x + beautiful.screen_margin * 2, nil, nil, nil })
+--     elseif direction == "right" then
+--         local old_y = c:geometry().y
+--         awful.placement.right(c, {
+--             honor_padding = true,
+--             honor_workarea = true,
+--         })
+--         c.y = old_y
+--         -- c:geometry({ x = workarea.width + workarea.x - client_geometry.width - beautiful.screen_margin * 2 - beautiful.border_width * 2, nil, nil, nil })
+--     end
+-- end
 
 -- Used as a custom command in rofi to move a window into the current tag
 -- instead of following it.

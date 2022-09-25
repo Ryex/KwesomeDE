@@ -5,19 +5,22 @@
 
 local awful = require("awful")
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
-local action_panel = require("presentation.ui.panels.action")
-local info_panel = require("presentation.ui.panels.info")
-local message_panel = require("presentation.ui.panels.message")
-local app_launcher = require("presentation.ui.popups.app_launcher")
 local beautiful = require("beautiful")
-local network_daemon = require("daemons.hardware.network")
-local bluetooth_daemon = require("daemons.hardware.bluetooth")
-local pactl_daemon = require("daemons.hardware.pactl")
-local upower_daemon = require("daemons.hardware.upower")
-local favorites_daemon = require("daemons.system.favorites")
-local animation = require("services.animation")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
+local action_panel = timed_load:require("presentation.ui.panels.action")
+local info_panel = timed_load:require("presentation.ui.panels.info")
+local message_panel = timed_load:require("presentation.ui.panels.message")
+local app_launcher = timed_load:require("presentation.ui.popups.app_launcher")
+local network_daemon = timed_load:require("daemons.hardware.network")
+local bluetooth_daemon = timed_load:require("daemons.hardware.bluetooth")
+local pactl_daemon = timed_load:require("daemons.hardware.pactl")
+local upower_daemon = timed_load:require("daemons.hardware.upower")
+local favorites_daemon = timed_load:require("daemons.system.favorites")
+local animation = timed_load:require("services.animation")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local string = string
 local ipairs = ipairs

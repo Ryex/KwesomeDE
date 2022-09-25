@@ -2,11 +2,13 @@
 -- @author https://github.com/Kasper24
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
-
-local wcontainer = require("presentation.ui.widgets.container")
 local beautiful = require("beautiful")
-local animation = require("services.animation")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local wcontainer = timed_load:require("presentation.ui.widgets.container")
+local animation = timed_load:require("services.animation")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 

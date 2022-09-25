@@ -7,9 +7,12 @@ local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
-local notification_daemon = require("daemons.system.notifications")
-local settings = require("services.settings")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local notification_daemon = timed_load:require("daemons.system.notifications")
+local settings = timed_load:require("services.settings")
+local helpers = timed_load:require("helpers")
 local ipairs = ipairs
 local type = type
 local capi = { awesome = awesome }

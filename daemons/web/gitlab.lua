@@ -6,8 +6,11 @@
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
-local settings = require("services.settings")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local settings = timed_load:require("services.settings")
+local helpers = timed_load:require("helpers")
 local string = string
 local ipairs = ipairs
 

@@ -2,16 +2,19 @@
 -- @author https://github.com/Kasper24
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
-print("LOADING [DAEMONS system.favorites]: Getting awful, gears.[object, table]")
+--print("LOADING [DAEMONS system.favorites]: Getting awful, gears.[object, table]")
 local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 
-print("LOADING [DAEMONS system.favorites]: Getting 'services.settings'")
-local settings = require("services.settings")
+--print("LOADING [DAEMONS system.favorites]: Getting 'services.settings'")
+
+local timed_load = require('timed_load')
+
+local settings = timed_load:require("services.settings")
 local string = string
 
-print("LOADING [DAEMONS system.favorites]: Defining")
+--print("LOADING [DAEMONS system.favorites]: Defining")
 local favorites = { }
 local instance = nil
 
@@ -56,9 +59,9 @@ local function new()
 end
 
 if not instance then
-    print("LOADING [DAEMONS system.favorites]: No instance, calling new()")
+    --print("LOADING [DAEMONS system.favorites]: No instance, calling new()")
     instance = new()
 end
 
-print("LOADING [DAEMONS system.favorites]: DONE")
+--print("LOADING [DAEMONS system.favorites]: DONE")
 return instance

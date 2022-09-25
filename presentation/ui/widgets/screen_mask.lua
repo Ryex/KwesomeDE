@@ -5,8 +5,12 @@
 
 local awful = require("awful")
 local wibox = require("wibox")
-local theme_daemon = require("daemons.system.theme")
 local beautiful = require("beautiful")
+
+local timed_load = require('timed_load')
+
+local theme_daemon = timed_load:require("daemons.system.theme")
+
 local setmetatable = setmetatable
 
 local screen_mask = { mt = {} }

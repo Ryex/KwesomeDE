@@ -4,19 +4,22 @@
 -------------------------------------------
 
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
-local cpu_popup = require("presentation.ui.applets.cpu")
-local ram_popup = require("presentation.ui.applets.ram")
-local disk_popup = require("presentation.ui.applets.disk")
-local audio_popup = require("presentation.ui.applets.audio")
 local beautiful = require("beautiful")
-local cpu_daemon = require("daemons.hardware.cpu")
-local ram_daemon = require("daemons.hardware.ram")
-local disk_daemon = require("daemons.hardware.disk")
-local temperature_daemon = require("daemons.hardware.temperature")
-local pactl_daemon = require("daemons.hardware.pactl")
-local brightness_daemon = require("daemons.system.brightness")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
+local cpu_popup = timed_load:require("presentation.ui.applets.cpu")
+local ram_popup = timed_load:require("presentation.ui.applets.ram")
+local disk_popup = timed_load:require("presentation.ui.applets.disk")
+local audio_popup = timed_load:require("presentation.ui.applets.audio")
+local cpu_daemon = timed_load:require("daemons.hardware.cpu")
+local ram_daemon = timed_load:require("daemons.hardware.ram")
+local disk_daemon = timed_load:require("daemons.hardware.disk")
+local temperature_daemon = timed_load:require("daemons.hardware.temperature")
+local pactl_daemon = timed_load:require("daemons.hardware.pactl")
+local brightness_daemon = timed_load:require("daemons.system.brightness")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 local tostring = tostring

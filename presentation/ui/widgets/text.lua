@@ -7,7 +7,10 @@ local gtable = require("gears.table")
 local gstring = require("gears.string")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local helpers = timed_load:require("helpers")
 local setmetatable = setmetatable
 local tostring = tostring
 local string = string

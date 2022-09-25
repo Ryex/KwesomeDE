@@ -4,21 +4,24 @@
 -------------------------------------------
 
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
-local screenshot_popup = require("presentation.ui.apps.screenshot")
-local record_popup = require("presentation.ui.apps.record")
-local wifi_popup = require("presentation.ui.applets.wifi")
-local bluetooth_popup = require("presentation.ui.applets.bluetooth")
 local beautiful = require("beautiful")
-local radio_daemon = require("daemons.hardware.radio")
-local network_daemon = require("daemons.hardware.network")
-local bluetooth_daemon = require("daemons.hardware.bluetooth")
-local picom_daemon = require("daemons.system.picom")
-local redshift_daemon = require("daemons.system.redshift")
-local pactl_daemon = require("daemons.hardware.pactl")
-local record_daemon = require("daemons.system.record")
-local notifications_daemon = require("daemons.system.notifications")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
+local screenshot_popup = timed_load:require("presentation.ui.apps.screenshot")
+local record_popup = timed_load:require("presentation.ui.apps.record")
+local wifi_popup = timed_load:require("presentation.ui.applets.wifi")
+local bluetooth_popup = timed_load:require("presentation.ui.applets.bluetooth")
+local radio_daemon = timed_load:require("daemons.hardware.radio")
+local network_daemon = timed_load:require("daemons.hardware.network")
+local bluetooth_daemon = timed_load:require("daemons.hardware.bluetooth")
+local picom_daemon = timed_load:require("daemons.system.picom")
+local redshift_daemon = timed_load:require("daemons.system.redshift")
+local pactl_daemon = timed_load:require("daemons.hardware.pactl")
+local record_daemon = timed_load:require("daemons.system.record")
+local notifications_daemon = timed_load:require("daemons.system.notifications")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 

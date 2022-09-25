@@ -8,8 +8,11 @@ local gobject = require("gears.object")
 local gtable = require("gears.table")
 local beautiful = require("beautiful")
 local bling = require("modules.bling")
-local animation = require("services.animation")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local animation = timed_load:require("services.animation")
+local helpers = timed_load:require("helpers")
 local math = math
 local keys = { mod = "Mod4", ctrl = "Control", shift = "Shift", alt = "Mod1" }
 

@@ -4,9 +4,13 @@
 -------------------------------------------
 
 local gtable = require("gears.table")
-local wmenu = require("presentation.ui.widgets.menu")
-local wbuttontext = require("presentation.ui.widgets.button.text")
 local beautiful = require("beautiful")
+
+local timed_load = require('timed_load')
+
+local wmenu = timed_load:require("presentation.ui.widgets.menu")
+local wbuttontext = timed_load:require("presentation.ui.widgets.button.text")
+
 local setmetatable = setmetatable
 local pairs = pairs
 

@@ -9,7 +9,10 @@ local gtable = require("gears.table")
 local gtimer = require("gears.timer")
 local bling = require("modules.bling")
 local tabbed = bling.module.tabbed
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local helpers = timed_load:require("helpers")
 local tostring = tostring
 local string = string
 local ipairs = ipairs

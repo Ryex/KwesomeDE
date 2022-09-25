@@ -6,7 +6,10 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local bling = require("modules.bling")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 
 local instance = nil

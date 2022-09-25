@@ -5,12 +5,15 @@
 
 local awful = require("awful")
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
 local beautiful = require("beautiful")
-local email_daemon = require("daemons.web.email")
-local github_daemon = require("daemons.web.github")
-local gitlab_daemon = require("daemons.web.gitlab")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
+local email_daemon = timed_load:require("daemons.web.email")
+local github_daemon = timed_load:require("daemons.web.github")
+local gitlab_daemon = timed_load:require("daemons.web.gitlab")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local collectgarbage = collectgarbage
 local setmetatable = setmetatable

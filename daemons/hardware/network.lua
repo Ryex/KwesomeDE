@@ -9,8 +9,11 @@ local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
-local helpers = require("helpers")
-local dbus_proxy = require("services.dbus_proxy")
+
+local timed_load = require('timed_load')
+
+local helpers = timed_load:require("helpers")
+local dbus_proxy = timed_load:require("services.dbus_proxy")
 local ipairs = ipairs
 local string = string
 local table = table

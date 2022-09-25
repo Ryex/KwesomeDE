@@ -7,9 +7,12 @@ local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
-local bluetooth_daemon = require("daemons.hardware.bluetooth")
-local network_daemon = require("daemons.hardware.network")
-local settings = require("services.settings")
+
+local timed_load = require('timed_load')
+
+local bluetooth_daemon = timed_load:require("daemons.hardware.bluetooth")
+local network_daemon = timed_load:require("daemons.hardware.network")
+local settings = timed_load:require("services.settings")
 
 local radio = { }
 local instance = nil

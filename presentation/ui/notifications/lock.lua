@@ -5,7 +5,10 @@
 
 local beautiful = require("beautiful")
 local naughty = require("naughty")
-local system_daemon = require("daemons.system.system")
+
+local timed_load = require('timed_load')
+
+local system_daemon = timed_load:require("daemons.system.system")
 
 local icons =
 {

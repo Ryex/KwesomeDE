@@ -6,8 +6,11 @@
 local awful = require("awful")
 local gtimer = require("gears.timer")
 local beautiful = require("beautiful")
-local persistent_daemon = require("daemons.system.persistent")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local persistent_daemon = timed_load:require("daemons.system.persistent")
+local helpers = timed_load:require("helpers")
 
 local function setup_system_tools()
    helpers.run.run_once_ps("polkit-gnome-authentication-agent-1", "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
@@ -19,9 +22,9 @@ local function setup_system_tools()
 end
 
 local function configure_xserver()
-   awful.spawn("xrandr --output DP-2 --gamma 0.8", false)
+   --awful.spawn("xrandr --output DP-2 --gamma 0.8", false)
    awful.spawn("xset s off", false)
-   awful.spawn("xset -dpms", false)
+   --awful.spawn("xset -dpms", false)
    awful.spawn("xset s noblank", false)
    awful.spawn("xset r rate 200 30", false)
    gtimer.delayed_call(function()

@@ -4,7 +4,10 @@
 -------------------------------------------
 
 local GLib = require("lgi").GLib
-local dbp = require("services.dbus_proxy")
+
+local timed_load = require('timed_load')
+
+local dbp = timed_load:require("services.dbus_proxy")
 
 --[[
 This module first converts both the appmenu and the gtk interface into something like the following.

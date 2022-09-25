@@ -5,8 +5,11 @@
 
 local awful = require("awful")
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
 local beautiful = require("beautiful")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
 local dpi = beautiful.xresources.apply_dpi
 local capi = { client = client }
 
@@ -143,4 +146,4 @@ capi.client.connect_signal("request::titlebars", function(c)
     }
 end)
 
-require(... .. ".ncmpcpp")
+timed_load:require(... .. ".ncmpcpp")

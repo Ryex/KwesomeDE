@@ -8,11 +8,14 @@ local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gshape = require("gears.shape")
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
 local beautiful = require("beautiful")
-local pactl_daemon = require("daemons.hardware.pactl")
-local helpers = require("helpers")
-local icon_theme = require("services.icon_theme")
+local pactl_daemon = timed_load:require("daemons.hardware.pactl")
+local helpers = timed_load:require("helpers")
+local icon_theme = timed_load:require("services.icon_theme")
 local dpi = beautiful.xresources.apply_dpi
 
 local audio = { }

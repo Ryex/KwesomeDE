@@ -11,10 +11,13 @@ local gcolor = require("gears.color")
 local gtimer = require("gears.timer")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local settings = require("services.settings")
-local inotify = require("services.inotify")
+
+local timed_load = require('timed_load')
+
+local settings = timed_load:require("services.settings")
+local inotify = timed_load:require("services.inotify")
 local color_libary = require("modules.color")
-local helpers = require("helpers")
+local helpers = timed_load:require("helpers")
 local string = string
 local table = table
 local capi = { awesome = awesome, screen = screen, client = client }

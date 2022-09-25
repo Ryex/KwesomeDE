@@ -7,10 +7,13 @@ local awful = require("awful")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
 local wibox = require("wibox")
-local welevated = require("presentation.ui.widgets.button.elevated")
-local twidget = require("presentation.ui.widgets.text")
 local beautiful = require("beautiful")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local welevated = timed_load:require("presentation.ui.widgets.button.elevated")
+local twidget = timed_load:require("presentation.ui.widgets.text")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 local ipairs = ipairs

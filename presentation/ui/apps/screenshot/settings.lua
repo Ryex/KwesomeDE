@@ -4,14 +4,17 @@
 -------------------------------------------
 
 local wibox = require("wibox")
-print("LOADING [PRESENTATION ui.apps.screenshot.settings]: Getting 'presentation.ui.widgets'")
-local widgets = require("presentation.ui.widgets")
+
+local timed_load = require('timed_load')
+
+--print("LOADING [PRESENTATION ui.apps.screenshot.settings]: Getting 'presentation.ui.widgets'")
+local widgets = timed_load:require("presentation.ui.widgets")
 local beautiful = require("beautiful")
-print("LOADING [PRESENTATION ui.apps.screenshot.settings]: Getting 'daemons.system.screenshot'")
-local screenshot_daemon = require("daemons.system.screenshot")
+--print("LOADING [PRESENTATION ui.apps.screenshot.settings]: Getting 'daemons.system.screenshot'")
+local screenshot_daemon = timed_load:require("daemons.system.screenshot")
 local dpi = beautiful.xresources.apply_dpi
 
-print("LOADING [PRESENTATION ui.apps.screenshot.settings]: Defining")
+--print("LOADING [PRESENTATION ui.apps.screenshot.settings]: Defining")
 local settings = { mt = {} }
 
 local accent_color = beautiful.random_accent_color()
@@ -182,6 +185,6 @@ function settings.mt:__call(layout)
     return new(layout)
 end
 
-print("LOADING [PRESENTATION ui.apps.screenshot.settings]: DONE")
+--print("LOADING [PRESENTATION ui.apps.screenshot.settings]: DONE")
 
 return setmetatable(settings, settings.mt)

@@ -4,10 +4,13 @@
 -------------------------------------------
 
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
 local beautiful = require("beautiful")
-local weather_daemon = require("daemons.web.weather")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
+local weather_daemon = timed_load:require("daemons.web.weather")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 local tonumber = tonumber

@@ -7,10 +7,13 @@ local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
 local beautiful = require("beautiful")
-local disk_daemon = require("daemons.hardware.disk")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
+local disk_daemon = timed_load:require("daemons.hardware.disk")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local tonumber = tonumber
 local ipairs = ipairs

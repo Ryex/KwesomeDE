@@ -2,17 +2,19 @@
 -- @author https://github.com/Kasper24
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
-print("LOADING [SERVICES settings]: Getting awful, gears.[object, table, timer]")
+--print("LOADING [SERVICES settings]: Getting awful, gears.[object, table, timer]")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
 
-print("LOADING [SERVICES settings]: Getting 'helpers.[json, filesystem]'")
-local hjson = require("helpers.json")
-local hfilesystem = require("helpers.filesystem")
+local timed_load = require('timed_load')
+
+--print("LOADING [SERVICES settings]: Getting 'helpers.[json, filesystem]'")
+local hjson = timed_load:require("helpers.json")
+local hfilesystem = timed_load:require("helpers.filesystem")
 local tostring = tostring
 
-print("LOADING [SERVICES settings]: Defining")
+--print("LOADING [SERVICES settings]: Defining")
 local settings = { }
 local instance = nil
 
@@ -85,9 +87,9 @@ local function new()
 end
 
 if not instance then
-    print("LOADING [SERVICES settings]: No instance, calling new()")
+    --print("LOADING [SERVICES settings]: No instance, calling new()")
     instance = new()
 end
 
-print("LOADING [SERVICES settings]: DONE")
+--print("LOADING [SERVICES settings]: DONE")
 return instance

@@ -3,46 +3,48 @@
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
 
-print("LOADING [CONFIG keys]: Getting awful") 
+--print("LOADING [CONFIG keys]: Getting awful") 
 local awful = require("awful")
 
-print("LOADING [CONFIG keys]: Getting 'presentation.ui.apps.screenshot'") -- BIG Pause 
-local screenshot_widget = require("presentation.ui.apps.screenshot")
-print("LOADING [CONFIG keys]: Getting 'presentation.ui.popups.main_menu'")
-local main_menu = require("presentation.ui.popups.main_menu")
-print("LOADING [CONFIG keys]: Getting 'presentation.ui.popups.power'")
-local power_popup = require("presentation.ui.popups.power")
-print("LOADING [CONFIG keys]: Getting 'presentation.ui.popups.app_launcher'")
-local app_launcher = require("presentation.ui.popups.app_launcher")
-print("LOADING [CONFIG keys]: Getting 'presentation.ui.popups.hotkeys'")
-local hotkeys_popup = require("presentation.ui.popups.hotkeys")
+local timed_load = require('timed_load')
 
-print("LOADING [CONFIG keys]: Getting 'daemons.system.playerctl'")
-local playerctl_daemon = require("daemons.system.playerctl")
-print("LOADING [CONFIG keys]: Getting 'daemons.hardware.pactl'")
-local pactl_daemon = require("daemons.hardware.pactl")
-print("LOADING [CONFIG keys]: Getting 'daemons.system.brightness'")
-local brightness_daemon = require("daemons.system.brightness")
-print("LOADING [CONFIG keys]: Getting 'daemons.hardware.rgb'")
-local rgb_daemon = require("daemons.hardware.rgb")
+--print("LOADING [CONFIG keys]: Getting 'presentation.ui.apps.screenshot'") -- BIG Pause 
+local screenshot_widget = timed_load:require("presentation.ui.apps.screenshot")
+--print("LOADING [CONFIG keys]: Getting 'presentation.ui.popups.main_menu'")
+local main_menu = timed_load:require("presentation.ui.popups.main_menu")
+--print("LOADING [CONFIG keys]: Getting 'presentation.ui.popups.power'")
+local power_popup = timed_load:require("presentation.ui.popups.power")
+--print("LOADING [CONFIG keys]: Getting 'presentation.ui.popups.app_launcher'")
+local app_launcher = timed_load:require("presentation.ui.popups.app_launcher")
+--print("LOADING [CONFIG keys]: Getting 'presentation.ui.popups.hotkeys'")
+local hotkeys_popup = timed_load:require("presentation.ui.popups.hotkeys")
 
-print("LOADING [CONFIG keys]: Getting 'helpers'")
-local helpers = require("helpers")
+--print("LOADING [CONFIG keys]: Getting 'daemons.system.playerctl'")
+local playerctl_daemon = timed_load:require("daemons.system.playerctl")
+--print("LOADING [CONFIG keys]: Getting 'daemons.hardware.pactl'")
+local pactl_daemon = timed_load:require("daemons.hardware.pactl")
+--print("LOADING [CONFIG keys]: Getting 'daemons.system.brightness'")
+local brightness_daemon = timed_load:require("daemons.system.brightness")
+--print("LOADING [CONFIG keys]: Getting 'daemons.hardware.rgb'")
+local rgb_daemon = timed_load:require("daemons.hardware.rgb")
 
-print("LOADING [CONFIG keys]: Getting 'modules.bling'")
+--print("LOADING [CONFIG keys]: Getting 'helpers'")
+local helpers = timed_load:require("helpers")
+
+--print("LOADING [CONFIG keys]: Getting 'modules.bling'")
 local bling = require("modules.bling")
 
-print("LOADING [CONFIG keys]: Getting 'modules.layout-machi'")
+--print("LOADING [CONFIG keys]: Getting 'modules.layout-machi'")
 local machi = require("modules.layout-machi")
 
-print("LOADING [CONFIG keys]: Define capi, keys")
+--print("LOADING [CONFIG keys]: Define capi, keys")
 local capi = { awesome = awesome, client = client }
 local keys = { mod = "Mod4", ctrl = "Control", shift = "Shift", alt = "Mod1" }
 
 -- =============================================================================
 --  Awesome
 -- =============================================================================
-print("LOADING [CONFIG keys]: keyboard.append_global_keybindings Awesome")
+--print("LOADING [CONFIG keys]: keyboard.append_global_keybindings Awesome")
 awful.keyboard.append_global_keybindings
 ({
     -- restart awesomewm
@@ -67,7 +69,7 @@ awful.keyboard.append_global_keybindings
 -- =============================================================================
 --  Screen
 -- =============================================================================
-print("LOADING [CONFIG keys]: keyboard.append_global_keybindings Screen")
+--print("LOADING [CONFIG keys]: keyboard.append_global_keybindings Screen")
 awful.keyboard.append_global_keybindings
 ({
     -- Focus the next screen
@@ -96,7 +98,7 @@ awful.keyboard.append_global_keybindings
 -- =============================================================================
 --  Client
 -- =============================================================================
-print("LOADING [CONFIG keys]: client.connect_signal request::default_mousebindings")
+--print("LOADING [CONFIG keys]: client.connect_signal request::default_mousebindings")
 capi.client.connect_signal("request::default_mousebindings", function()
     awful.mouse.append_client_mousebindings
     ({
@@ -135,7 +137,7 @@ capi.client.connect_signal("request::default_mousebindings", function()
     })
 end)
 
-print("LOADING [CONFIG keys]: client.connect_signal request::default_keybindings")
+--print("LOADING [CONFIG keys]: client.connect_signal request::default_keybindings")
 capi.client.connect_signal("request::default_keybindings", function()
     awful.keyboard.append_client_keybindings
     ({
@@ -546,7 +548,7 @@ end)
 -- =============================================================================
 --  Layout
 -- =============================================================================
-print("LOADING [CONFIG keys]: keyboard.append_global_keybindings Layout")
+--print("LOADING [CONFIG keys]: keyboard.append_global_keybindings Layout")
 awful.keyboard.append_global_keybindings
 ({
     -- Add padding
@@ -685,7 +687,7 @@ awful.keyboard.append_global_keybindings
 -- =============================================================================
 --  Tag
 -- =============================================================================
-print("LOADING [CONFIG keys]: keyboard.append_global_keybindings Tag")
+--print("LOADING [CONFIG keys]: keyboard.append_global_keybindings Tag")
 awful.keyboard.append_global_keybindings
 ({
     -- View desktop
@@ -779,7 +781,7 @@ awful.keyboard.append_global_keybindings
 -- =============================================================================
 --  Media
 -- =============================================================================
-print("LOADING [CONFIG keys]: keyboard.append_global_keybindings Media")
+--print("LOADING [CONFIG keys]: keyboard.append_global_keybindings Media")
 awful.keyboard.append_global_keybindings
 ({
     -- Toogle media
@@ -906,7 +908,7 @@ awful.keyboard.append_global_keybindings
 -- =============================================================================
 --  UI
 -- =============================================================================
-print("LOADING [CONFIG keys]: keyboard.append_global_keybindings UI")
+--print("LOADING [CONFIG keys]: keyboard.append_global_keybindings UI")
 awful.keyboard.append_global_keybindings
 ({
     -- Toggle app launcher
@@ -955,7 +957,7 @@ awful.keyboard.append_global_keybindings
 -- =============================================================================
 --  Root
 -- =============================================================================
-print("LOADING [CONFIG keys]: mouse.append_global_mousebindings Root")
+--print("LOADING [CONFIG keys]: mouse.append_global_mousebindings Root")
 awful.mouse.append_global_mousebindings
 ({
     -- Right button.

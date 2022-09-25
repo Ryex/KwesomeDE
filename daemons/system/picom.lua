@@ -7,9 +7,12 @@ local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
-local inotify = require("services.inotify")
-local settings = require("services.settings")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local inotify = timed_load:require("services.inotify")
+local settings = timed_load:require("services.settings")
+local helpers = timed_load:require("helpers")
 local tonumber = tonumber
 local string = string
 local capi = { awesome = awesome }

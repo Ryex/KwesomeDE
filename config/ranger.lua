@@ -3,7 +3,9 @@
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
 
-local hotkeys_popup = require("presentation.ui.popups.hotkeys")
+local timed_load = require('timed_load')
+
+local hotkeys_popup = timed_load:require("presentation.ui.popups.hotkeys")
 local pairs = pairs
 
 local ranger_keys =

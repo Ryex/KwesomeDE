@@ -7,9 +7,12 @@ local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local wibox = require("wibox")
-local widgets = require("presentation.ui.widgets")
 local beautiful = require("beautiful")
-local helpers = require("helpers")
+
+local timed_load = require('timed_load')
+
+local widgets = timed_load:require("presentation.ui.widgets")
+local helpers = timed_load:require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local capi = { screen = screen }
 
@@ -55,10 +58,10 @@ local function new()
     local ret = gobject{}
     gtable.crush(ret, action_panel, true)
 
-    local user = require(path .. ".user")
-    local system_control = require(path .. ".system_control")
-    local system_info = require(path .. ".system_info")
-    local playerctl = require(path .. ".playerctl")
+    local user = timed_load:require(path .. ".user")
+    local system_control = timed_load:require(path .. ".system_control")
+    local system_info = timed_load:require(path .. ".system_info")
+    local playerctl = timed_load:require(path .. ".playerctl")
 
     ret.widget = awful.popup
     {

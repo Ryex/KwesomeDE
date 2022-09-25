@@ -6,7 +6,10 @@
 local gtable = require("gears.table")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local animation = require("services.animation")
+
+local timed_load = require('timed_load')
+
+local animation = timed_load:require("services.animation")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 
