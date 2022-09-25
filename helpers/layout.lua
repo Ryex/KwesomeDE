@@ -1,8 +1,8 @@
 local awful = require("awful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local settings = timed_load:require("services.settings")
+local settings = timed_load.require("services.settings")
 local tonumber = tonumber
 
 local _layout = {}

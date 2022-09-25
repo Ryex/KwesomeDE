@@ -6,10 +6,10 @@
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local picom_daemon = timed_load:require("daemons.system.picom")
-local helpers = timed_load:require("helpers")
+local picom_daemon = timed_load.require("daemons.system.picom")
+local helpers = timed_load.require("helpers")
 
 local icons =
 {

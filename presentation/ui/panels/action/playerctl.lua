@@ -6,9 +6,9 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local widgets = timed_load:require("presentation.ui.widgets")
+local widgets = timed_load.require("presentation.ui.widgets")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 

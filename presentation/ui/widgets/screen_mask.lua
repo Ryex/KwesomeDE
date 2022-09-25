@@ -7,9 +7,9 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local theme_daemon = timed_load:require("daemons.system.theme")
+local theme_daemon = timed_load.require("daemons.system.theme")
 
 local setmetatable = setmetatable
 

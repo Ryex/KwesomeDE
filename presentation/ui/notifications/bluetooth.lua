@@ -6,10 +6,10 @@
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local bluetooth_daemon = timed_load:require("daemons.hardware.bluetooth")
-local helpers = timed_load:require("helpers")
+local bluetooth_daemon = timed_load.require("daemons.hardware.bluetooth")
+local helpers = timed_load.require("helpers")
 
 local bluetooth_icons =
 {

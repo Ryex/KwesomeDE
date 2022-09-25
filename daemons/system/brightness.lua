@@ -10,9 +10,9 @@ local gtable = require("gears.table")
 
 --print("LOADING [DAEMONS system.brightness]: Getting 'services.inotify'")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local inotify = timed_load:require("services.inotify")
+local inotify = timed_load.require("services.inotify")
 local tonumber = tonumber
 
 --print("LOADING [DAEMONS system.brightness]: Defining")

@@ -8,9 +8,9 @@ local gtable = require("gears.table")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local helpers = timed_load:require("helpers")
+local helpers = timed_load.require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 
 local instance = nil

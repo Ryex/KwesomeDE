@@ -6,9 +6,9 @@
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local github_daemon = timed_load:require("daemons.web.github")
+local github_daemon = timed_load.require("daemons.web.github")
 
 local icons =
 {

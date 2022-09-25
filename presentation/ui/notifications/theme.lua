@@ -6,9 +6,9 @@
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local theme_daemon = timed_load:require("daemons.system.theme")
+local theme_daemon = timed_load.require("daemons.system.theme")
 
 theme_daemon:connect_signal("templates::already_exists", function(self, template)
     naughty.notification

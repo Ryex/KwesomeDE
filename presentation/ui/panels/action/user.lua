@@ -6,14 +6,14 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local widgets = timed_load:require("presentation.ui.widgets")
-local power_popup = timed_load:require("presentation.ui.popups.power")
-local upower_daemon = timed_load:require("daemons.hardware.upower")
-local system_daemon = timed_load:require("daemons.system.system")
-local package_manager_daemon = timed_load:require("daemons.system.package_manager")
-local helpers = timed_load:require("helpers")
+local widgets = timed_load.require("presentation.ui.widgets")
+local power_popup = timed_load.require("presentation.ui.popups.power")
+local upower_daemon = timed_load.require("daemons.hardware.upower")
+local system_daemon = timed_load.require("daemons.system.system")
+local package_manager_daemon = timed_load.require("daemons.system.package_manager")
+local helpers = timed_load.require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 local os = os

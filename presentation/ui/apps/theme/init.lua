@@ -10,10 +10,10 @@ local ruled = require("ruled")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local settings = timed_load:require("services.settings")
-local helpers = timed_load:require("helpers")
+local settings = timed_load.require("services.settings")
+local helpers = timed_load.require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 
 local theme = { }
@@ -81,8 +81,8 @@ local function new()
 
     local stack = wibox.layout.stack()
     stack:set_top_only(true)
-    stack:add(timed_load:require(path .. ".main")(ret, stack))
-    stack:add(timed_load:require(path .. ".settings")(stack))
+    stack:add(timed_load.require(path .. ".main")(ret, stack))
+    stack:add(timed_load.require(path .. ".settings")(stack))
 
     ruled.client.connect_signal("request::rules", function()
         ruled.client.append_rule

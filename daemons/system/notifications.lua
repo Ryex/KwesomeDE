@@ -11,12 +11,12 @@ local gstring = require("gears.string")
 local wibox = require("wibox")
 local naughty = require("naughty")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
 --print("LOADING [DAEMONS system.notifications]: Getting 'services.settings'")
-local settings = timed_load:require("services.settings")
+local settings = timed_load.require("services.settings")
 --print("LOADING [DAEMONS system.notifications]: Getting 'helpers'")
-local helpers = timed_load:require("helpers")
+local helpers = timed_load.require("helpers")
 local ipairs = ipairs
 local table  = table
 local os = os

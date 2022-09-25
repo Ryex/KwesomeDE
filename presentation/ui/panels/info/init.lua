@@ -10,7 +10,7 @@ local gshape = require("gears.shape")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
 local dpi = beautiful.xresources.apply_dpi
 
@@ -42,8 +42,8 @@ local function new()
     local ret = gobject{}
     gtable.crush(ret, info_panel, true)
 
-    local calender = timed_load:require(path .. ".calendar")
-    local weather = timed_load:require(path .. ".weather")
+    local calender = timed_load.require(path .. ".calendar")
+    local weather = timed_load.require(path .. ".weather")
 
     ret.widget = awful.popup
     {

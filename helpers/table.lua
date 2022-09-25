@@ -1,6 +1,6 @@
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local hstring = timed_load:require("helpers.string")
+local hstring = timed_load.require("helpers.string")
 local pairs = pairs
 
 local _table = {}

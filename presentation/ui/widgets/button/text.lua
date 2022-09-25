@@ -6,12 +6,12 @@
 local gtable = require("gears.table")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local twidget = timed_load:require("presentation.ui.widgets.text")
-local ewidget = timed_load:require("presentation.ui.widgets.button.elevated")
-local animation = timed_load:require("services.animation")
-local helpers = timed_load:require("helpers")
+local twidget = timed_load.require("presentation.ui.widgets.text")
+local ewidget = timed_load.require("presentation.ui.widgets.button.elevated")
+local animation = timed_load.require("services.animation")
+local helpers = timed_load.require("helpers")
 local setmetatable = setmetatable
 local math = math
 

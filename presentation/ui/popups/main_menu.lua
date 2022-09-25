@@ -6,23 +6,23 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local widgets = timed_load:require("presentation.ui.widgets")
-local action_panel = timed_load:require("presentation.ui.panels.action")
-local message_panel = timed_load:require("presentation.ui.panels.message")
-local info_panel = timed_load:require("presentation.ui.panels.info")
-local app_launcher = timed_load:require("presentation.ui.popups.app_launcher")
-local screenshot_popup = timed_load:require("presentation.ui.apps.screenshot")
-local record_popup = timed_load:require("presentation.ui.apps.record")
-local hotkeys_popup = timed_load:require("presentation.ui.popups.hotkeys")
-local power_popup = timed_load:require("presentation.ui.popups.power")
-local theme_popup = timed_load:require("presentation.ui.apps.theme")
+local widgets = timed_load.require("presentation.ui.widgets")
+local action_panel = timed_load.require("presentation.ui.panels.action")
+local message_panel = timed_load.require("presentation.ui.panels.message")
+local info_panel = timed_load.require("presentation.ui.panels.info")
+local app_launcher = timed_load.require("presentation.ui.popups.app_launcher")
+local screenshot_popup = timed_load.require("presentation.ui.apps.screenshot")
+local record_popup = timed_load.require("presentation.ui.apps.record")
+local hotkeys_popup = timed_load.require("presentation.ui.popups.hotkeys")
+local power_popup = timed_load.require("presentation.ui.popups.power")
+local theme_popup = timed_load.require("presentation.ui.apps.theme")
 
 local ipairs = ipairs
 local capi = { screen = screen, tag = tag }
 
-local recent_places_daemon = timed_load:require("daemons.system.recent_places")
+local recent_places_daemon = timed_load.require("daemons.system.recent_places")
 
 local instance = nil
 

@@ -9,12 +9,12 @@ local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local helpers = timed_load:require("helpers")
+local helpers = timed_load.require("helpers")
 
 --print("LOADING [DAEMONS system.desktop]: Getting 'services.inotify'")
-local inotify = timed_load:require("services.inotify")
+local inotify = timed_load.require("services.inotify")
 local ipairs = ipairs
 local pairs = pairs
 local os = os

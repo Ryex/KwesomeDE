@@ -7,11 +7,11 @@ local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
 --print("LOADING [SERVICES settings]: Getting 'helpers.[json, filesystem]'")
-local hjson = timed_load:require("helpers.json")
-local hfilesystem = timed_load:require("helpers.filesystem")
+local hjson = timed_load.require("helpers.json")
+local hfilesystem = timed_load.require("helpers.filesystem")
 local tostring = tostring
 
 --print("LOADING [SERVICES settings]: Defining")

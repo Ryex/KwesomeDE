@@ -4,11 +4,11 @@
 -------------------------------------------
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local wcontainer = timed_load:require("presentation.ui.widgets.container")
-local animation = timed_load:require("services.animation")
-local helpers = timed_load:require("helpers")
+local wcontainer = timed_load.require("presentation.ui.widgets.container")
+local animation = timed_load.require("services.animation")
+local helpers = timed_load.require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 

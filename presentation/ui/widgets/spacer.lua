@@ -5,9 +5,9 @@
 
 local wibox = require("wibox")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local twidget = timed_load:require("presentation.ui.widgets.text")
+local twidget = timed_load.require("presentation.ui.widgets.text")
 
 local setmetatable = setmetatable
 

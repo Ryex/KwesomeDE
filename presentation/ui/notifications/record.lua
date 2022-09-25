@@ -7,9 +7,9 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local record_daemon = timed_load:require("daemons.system.record")
+local record_daemon = timed_load.require("daemons.system.record")
 
 local icons =
 {

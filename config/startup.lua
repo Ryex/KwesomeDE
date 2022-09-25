@@ -7,10 +7,10 @@ local awful = require("awful")
 local gtimer = require("gears.timer")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local persistent_daemon = timed_load:require("daemons.system.persistent")
-local helpers = timed_load:require("helpers")
+local persistent_daemon = timed_load.require("daemons.system.persistent")
+local helpers = timed_load.require("helpers")
 
 local function setup_system_tools()
    helpers.run.run_once_ps("polkit-gnome-authentication-agent-1", "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")

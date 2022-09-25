@@ -6,10 +6,10 @@
 local gtable = require("gears.table")
 local wibox = require("wibox")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local ewidget = timed_load:require("presentation.ui.widgets.button.elevated")
-local animation = timed_load:require("services.animation")
+local ewidget = timed_load.require("presentation.ui.widgets.button.elevated")
+local animation = timed_load.require("services.animation")
 local setmetatable = setmetatable
 
 local image_button = { mt = {} }

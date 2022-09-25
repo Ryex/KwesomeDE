@@ -22,9 +22,9 @@ local lgi = require("lgi")
 local Gio = lgi.Gio
 local GObject = lgi.GObject
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local Proxy = timed_load:require("services.dbus_proxy._proxy")
+local Proxy = timed_load.require("services.dbus_proxy._proxy")
 
 local monitored = {}
 

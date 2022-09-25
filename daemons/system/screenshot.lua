@@ -8,12 +8,12 @@ local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
 --print("LOADING [DAEMONS system.screenshot]: Getting 'services.settings'")
-local settings = timed_load:require("services.settings")
+local settings = timed_load.require("services.settings")
 --print("LOADING [DAEMONS system.screenshot]: Getting 'helpers'")
-local helpers = timed_load:require("helpers")
+local helpers = timed_load.require("helpers")
 local os = os
 
 --print("LOADING [DAEMONS system.screenshot]: Defining")

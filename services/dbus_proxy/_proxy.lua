@@ -32,9 +32,9 @@ local GVariant = lgi.GLib.Variant
 
 local _DEFAULT_TIMEOUT = -1
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local variant = timed_load:require("services.dbus_proxy._variant")
+local variant = timed_load.require("services.dbus_proxy._variant")
 
 --[[-- A proxy object
 

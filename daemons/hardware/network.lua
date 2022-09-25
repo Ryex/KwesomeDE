@@ -10,10 +10,10 @@ local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local helpers = timed_load:require("helpers")
-local dbus_proxy = timed_load:require("services.dbus_proxy")
+local helpers = timed_load.require("helpers")
+local dbus_proxy = timed_load.require("services.dbus_proxy")
 local ipairs = ipairs
 local string = string
 local table = table

@@ -6,9 +6,9 @@
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local email_daemon = timed_load:require("daemons.web.email")
+local email_daemon = timed_load.require("daemons.web.email")
 local type = type
 
 local icons =

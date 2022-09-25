@@ -5,13 +5,13 @@
 
 local wibox = require("wibox")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
 --print("LOADING [PRESENTATION ui.apps.screenshot]: Getting 'presentation.ui.widgets'")
-local widgets = timed_load:require("presentation.ui.widgets")
+local widgets = timed_load.require("presentation.ui.widgets")
 local beautiful = require("beautiful")
 --print("LOADING [PRESENTATION ui.apps.screenshot.main]: Getting 'daemons.system.screenshot'")
-local screenshot_daemon = timed_load:require("daemons.system.screenshot")
+local screenshot_daemon = timed_load.require("daemons.system.screenshot")
 local dpi = beautiful.xresources.apply_dpi
 
 --print("LOADING [PRESENTATION ui.apps.screenshot.main]: Defining")

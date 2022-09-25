@@ -11,12 +11,15 @@ local ruled = require("ruled")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local debugh = require("helpers.debug")
+local tcall = debugh.time.call
+
+local timed_load = require('helpers.timed_load')
 
 --print("LOADING [PRESENTATION ui.apps.screenshot]: Getting 'daemons.system.screenshot'")
-local screenshot_daemon = timed_load:require("daemons.system.screenshot")
+local screenshot_daemon = timed_load.require("daemons.system.screenshot")
 --print("LOADING [PRESENTATION ui.apps.screenshot]: Getting 'helpers'")
-local helpers = timed_load:require("helpers")
+local helpers = timed_load.require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 
 --print("LOADING [PRESENTATION ui.apps.screenshot]: Defining")
@@ -86,8 +89,8 @@ local function new()
     local stack = wibox.layout.stack()
     stack:set_top_only(true)
 
-    local main = timed_load:require(path .. ".main")
-    local settings = timed_load:require(path .. ".settings")
+    local main = timed_load.require(path .. ".main")
+    local settings = timed_load.require(path .. ".settings")
 
     stack:add(main(ret, stack))
     stack:add(settings(stack))

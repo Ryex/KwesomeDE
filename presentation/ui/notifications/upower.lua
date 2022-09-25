@@ -6,9 +6,9 @@
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local upower_daemon = timed_load:require("daemons.hardware.upower")
+local upower_daemon = timed_load.require("daemons.hardware.upower")
 
 local UPower_States =
 {

@@ -9,10 +9,10 @@ local gtable = require("gears.table")
 local beautiful = require("beautiful")
 local bling = require("modules.bling")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local animation = timed_load:require("services.animation")
-local helpers = timed_load:require("helpers")
+local animation = timed_load.require("services.animation")
+local helpers = timed_load.require("helpers")
 local math = math
 local keys = { mod = "Mod4", ctrl = "Control", shift = "Shift", alt = "Mod1" }
 

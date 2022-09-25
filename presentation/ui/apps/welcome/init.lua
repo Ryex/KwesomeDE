@@ -11,16 +11,16 @@ local ruled = require("ruled")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local widgets = timed_load:require("presentation.ui.widgets")
-local system_daemon = timed_load:require("daemons.system.system")
-local email_daemon = timed_load:require("daemons.web.email")
-local github_daemon = timed_load:require("daemons.web.github")
-local gitlab_daemon = timed_load:require("daemons.web.gitlab")
-local weather_daemon = timed_load:require("daemons.web.weather")
-local settings = timed_load:require("services.settings")
-local helpers = timed_load:require("helpers")
+local widgets = timed_load.require("presentation.ui.widgets")
+local system_daemon = timed_load.require("daemons.system.system")
+local email_daemon = timed_load.require("daemons.web.email")
+local github_daemon = timed_load.require("daemons.web.github")
+local gitlab_daemon = timed_load.require("daemons.web.gitlab")
+local weather_daemon = timed_load.require("daemons.web.weather")
+local settings = timed_load.require("services.settings")
+local helpers = timed_load.require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 
 local welcome = { }

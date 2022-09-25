@@ -12,9 +12,9 @@ local gtimer = require("gears.timer")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local ebutton = timed_load:require("presentation.ui.widgets.button.elevated")
+local ebutton = timed_load.require("presentation.ui.widgets.button.elevated")
 local tostring = tostring
 local ipairs = ipairs
 local string = string

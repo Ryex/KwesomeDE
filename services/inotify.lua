@@ -7,9 +7,9 @@ local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local helpers = timed_load:require("helpers")
+local helpers = timed_load.require("helpers")
 local string = string
 local ipairs = ipairs
 local type = type

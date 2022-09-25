@@ -4,7 +4,9 @@
 local gears = require("gears")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
-local posix = require("posix")
+
+local debugh = require("helpers.debug")
+local time = debugh.time
 
 Stack = {}
 
@@ -76,6 +78,7 @@ local instance = nil
 
 local _DEBUG_LOADING = false
 local _DEBUG_FIRST_ONLY = true
+local _DUBUG_MEMORY = false
 
 local _LOAD_WITH_TIMES = {}
 local _LUA_LOAD_TIME = os.time()
@@ -86,56 +89,11 @@ local _require_call = 0
 local _require_cached = 0
 local _require_loads = 0
 
-local Time = {}
-
-local function lua_now()
-  return {
-    sec = os.time(),
-    clk = os.clock()
-  }
-end
-
-
-local function posix_now()
-  if posix ~= nil then
-    local s, ns = posix.clock_gettime(0)
-    return {sec = s, nsec = ns}
-  else
-    return nil
-  end
-end
-
-
-local function now()
-  return {
-    lua = lua_now(),
-    posix = posix_now()
-  }
-end
-
-local function time_diff(start, finish)
-  local diff = {
-    lua = {
-      sec = finish.lua.sec - start.lua.sec,
-      clk = finish.lua.clk - start.lua.clk
-    },
-    posix = nil
-  }
-  if start.posix ~= nil and finish.posix ~= nil then
-    diff.posix = {
-      sec = finish.posix.sec - start.posix.sec,
-      nsec = finish.posix.nsec - start.posix.nsec
-    }
-  end
-  return diff
-end
-
-
-function load:new(path)
+function load.new(path)
   return {
     path = path,
     module = nil,
-    _start = now(),
+    _start = time.now(),
     _finish = nil,
     _load_time = nil,
     _load_order = _require_loads,
@@ -144,20 +102,20 @@ function load:new(path)
 end
 
 
-function load:require(path)
+function load.require(path)
 
   _require_call = _require_call + 1
 
   if _LOAD_WITH_TIMES[path] ~= nil then
     if _DEBUG_LOADING and not _DEBUG_FIRST_ONLY then
-      print(string.format("LOADING: require %s | CACHED", path))
+      debugh.log("LOADING | require %s | CACHED", path)
     end
     _require_cached = _require_cached + 1
     return _LOAD_WITH_TIMES[path].module
   end
 
   if _DEBUG_LOADING then
-    print(string.format("LOADING: require %s | FIRST LOAD", path))
+    debugh.log("LOADING | require %s | FIRST LOAD", path)
   end
 
   _require_loads = _require_loads + 1
@@ -165,15 +123,18 @@ function load:require(path)
   local m = load.new(path)
   _require_stack:push(path)
   m.module = require(path)
-  m._finish = now()
+  m._finish = time.now()
   _require_stack:pop()
 
-  m._load_time = time_diff(m._start, m._finish)
+  m._load_time = time.time_diff(m._start, m._finish)
 
   _LOAD_WITH_TIMES[path] = m
 
   if _DEBUG_LOADING then
-    print(string.format("LOADING: FINISHED require %s", path))
+    debugh.log("LOADING | FINISHED require %s", path)
+  end
+  if _DUBUG_MEMORY then
+    debugh.log("LOADING | Using %s Kb of memory", collectgarbage("count"))
   end
 
   return m.module
@@ -249,7 +210,7 @@ local function calc_load_results(recalc)
     local req_by = _load_results.results[path].req_by
     if req_by ~= nil then
       local req_time =  _load_results.results[req_by].req_time or 0
-      local load_time = _load_results.results[path]._load_time.lua.clk * 1000
+      local load_time = _load_results.results[path]._load_time.clk * 1000
       _load_results:update(req_by, {
         req_time = req_time + load_time
       })
@@ -257,7 +218,7 @@ local function calc_load_results(recalc)
   end
 
   for _, val in pairs(_load_results.results) do
-    val.total_time = val._load_time.lua.clk * 1000
+    val.total_time = val._load_time.clk * 1000
     val.load_time = val.total_time - val.req_time
 
     _load_results.out[val.order] = val
@@ -267,21 +228,21 @@ local function calc_load_results(recalc)
 end
 
 local function print_header(padding)
-  print(string.format("Order | Path%s | %14s | %14s | %14s | %s",
-    string.rep(" ", padding - 4), "Load", "Require", "Total", "Required First By"))
+    debugh.log("Order | Path%s | %14s | %14s | %14s | %s",
+    string.rep(" ", padding - 4), "Load", "Require", "Total", "Required First By")
     local fill = string.rep("-", 14)
-    print(string.format(":-----|--%s|-%s:|-%s:|-%s:|-%s",
-      string.rep("-", padding), fill, fill, fill, string.rep("-", 20)))
+    debugh.log(":-----|--%s|-%s:|-%s:|-%s:|-%s",
+      string.rep("-", padding), fill, fill, fill, string.rep("-", 20))
 end
 
 local function print_load_time(order, path, loadt, reqt, totalt, req_by, padding, indent)
   local ins = string.rep("~ ", indent)
   local outs = string.rep(" ", padding - #path - (indent * 2))
-  print(string.format("%-5d | %s%s%s | %12.5fms | %12.5fms | %12.5fms | %s",
-    order, ins, path, outs, loadt, reqt, totalt, req_by))
+  debugh.log("%-5d | %s%s%s | %12.5fms | %12.5fms | %12.5fms | %s",
+    order, ins, path, outs, loadt, reqt, totalt, req_by)
 end
 
-function load:print_load_times(recalc)
+function load.print_load_times(recalc)
 
   recalc = recalc or false
 
@@ -304,12 +265,12 @@ function load:print_load_times(recalc)
   end
 end
 
-function load:save_load_results(save_path, recalc)
+function load.save_load_results(save_path, recalc)
   recalc = recalc or false
 
   calc_load_results(recalc)
 
-  print(string.format("LOADING: Saving results to '%s'", save_path))
+  debugh.log("LOADING: Saving results to '%s'", save_path)
 
   local file = assert(io.open(save_path, "w"))
   file:write('Order, Path,  Load, Require, Total, Required First By')
@@ -322,12 +283,18 @@ function load:save_load_results(save_path, recalc)
 
 end
 
-function load:setup_debug(debug, first_only)
-  debug = debug or false
-  first_only = first_only or true
+function load.setup_debug(args)
+  args = args or {}
+  args.debug = args.debug or false
+  args.first_only = args.first_only or true
+  args.memory = args.memory or false
 
-  _DEBUG_LOADING = debug
-  _DEBUG_FIRST_ONLY = first_only
+  debugh.log("LOADING | setting up debug state")
+  debugh.dump("State", args)
+
+  _DEBUG_LOADING = args.debug
+  _DEBUG_FIRST_ONLY = args.first_only
+  _DUBUG_MEMORY = args.memory
 end
 
 local function new()

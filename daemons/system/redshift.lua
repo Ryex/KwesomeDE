@@ -8,17 +8,18 @@ local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local settings = timed_load:require("services.settings")
-local helpers = timed_load:require("helpers")
+local settings = timed_load.require("services.settings")
+local helpers = timed_load.require("helpers")
 
 local redshift = { }
 local instance = nil
 
 local UPDATE_INTERVAL = 1
 
-local state = -1
+
+local state = nil ---@type boolean not set 
 
 function redshift:turn_on()
     helpers.run.check_if_running("redshift", nil,

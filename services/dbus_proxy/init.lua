@@ -23,12 +23,12 @@
   @copyright (2018 - 2020) Stefano Mazzucco and contributors
   @module dbus_proxy
 ]]
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local Bus = timed_load:require(... .. "._bus")
-local Proxy = timed_load:require(... .. "._proxy")
-local variant = timed_load:require(... .. "._variant")
-local monitored = timed_load:require(... .. "._monitored")
+local Bus = timed_load.require(... .. "._bus")
+local Proxy = timed_load.require(... .. "._proxy")
+local variant = timed_load.require(... .. "._variant")
+local monitored = timed_load.require(... .. "._monitored")
 
 return {
   Proxy = Proxy,

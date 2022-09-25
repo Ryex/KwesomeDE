@@ -6,9 +6,9 @@
 local gtable = require("gears.table")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local wbuttontext = timed_load:require("presentation.ui.widgets.button.text")
+local wbuttontext = timed_load.require("presentation.ui.widgets.button.text")
 local setmetatable = setmetatable
 
 local checkbox = { mt = {} }

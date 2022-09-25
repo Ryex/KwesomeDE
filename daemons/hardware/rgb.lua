@@ -8,9 +8,9 @@ local gobject = require("gears.object")
 local gtable = require("gears.table")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local helpers = timed_load:require("helpers")
+local helpers = timed_load.require("helpers")
 
 local rgb = { }
 local instance = nil

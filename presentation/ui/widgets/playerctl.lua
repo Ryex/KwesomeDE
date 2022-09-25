@@ -7,16 +7,16 @@ local gshape = require("gears.shape")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local twidget = timed_load:require("presentation.ui.widgets.text")
-local tbutton = timed_load:require("presentation.ui.widgets.button.text")
-local ebutton = timed_load:require("presentation.ui.widgets.button.elevated")
-local wslider = timed_load:require("presentation.ui.widgets.slider")
-local general_playerctl_daemon = timed_load:require("daemons.system.playerctl")
-local animation = timed_load:require("services.animation")
-local helpers = timed_load:require("helpers")
-local icon_theme = timed_load:require("services.icon_theme")
+local twidget = timed_load.require("presentation.ui.widgets.text")
+local tbutton = timed_load.require("presentation.ui.widgets.button.text")
+local ebutton = timed_load.require("presentation.ui.widgets.button.elevated")
+local wslider = timed_load.require("presentation.ui.widgets.slider")
+local general_playerctl_daemon = timed_load.require("daemons.system.playerctl")
+local animation = timed_load.require("services.animation")
+local helpers = timed_load.require("helpers")
+local icon_theme = timed_load.require("services.icon_theme")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 local math = math

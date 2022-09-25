@@ -6,19 +6,19 @@
 local gcolor = require("gears.color")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
 --print("LOADING [THEME]: Getting 'daemons.system.theme'")
-local theme_daemon = timed_load:require("daemons.system.theme")
+local theme_daemon = timed_load.require("daemons.system.theme")
 
 --print("LOADING [THEME]: Getting 'services.settings'")
-local settings = timed_load:require("services.settings")
+local settings = timed_load.require("services.settings")
 
 --print("LOADING [THEME]: Getting 'modules.color'")
 local color_libary = require("modules.color")
 
 --print("LOADING [THEME]: Getting 'helpers'")
-local helpers = timed_load:require("helpers")
+local helpers = timed_load.require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local math = math
 

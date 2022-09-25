@@ -8,11 +8,11 @@ local gtimer = require("gears.timer")
 local ruled = require("ruled")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local picom_daemon = timed_load:require("daemons.system.picom")
-local settings = timed_load:require("services.settings")
-local animation = timed_load:require("services.animation")
+local picom_daemon = timed_load.require("daemons.system.picom")
+local settings = timed_load.require("services.settings")
+local animation = timed_load.require("services.animation")
 local capi = { awesome = awesome, client = client }
 
 require("awful.autofocus")

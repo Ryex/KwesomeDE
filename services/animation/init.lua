@@ -7,10 +7,10 @@ local GLib = require("lgi").GLib
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local subscribable = timed_load:require("services.animation.subscribable")
-local tween = timed_load:require("services.animation.tween")
+local subscribable = timed_load.require("services.animation.subscribable")
+local tween = timed_load.require("services.animation.tween")
 local ipairs = ipairs
 local table = table
 local pairs = pairs

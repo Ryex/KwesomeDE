@@ -9,9 +9,9 @@ local gtable = require("gears.table")
 
 --print("LOADING [DAEMONS system.favorites]: Getting 'services.settings'")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local settings = timed_load:require("services.settings")
+local settings = timed_load.require("services.settings")
 local string = string
 
 --print("LOADING [DAEMONS system.favorites]: Defining")

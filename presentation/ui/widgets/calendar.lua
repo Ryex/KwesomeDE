@@ -9,12 +9,12 @@ local gshape = require("gears.shape")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local wtext = timed_load:require("presentation.ui.widgets.text")
-local wtbutton = timed_load:require("presentation.ui.widgets.button.text")
+local wtext = timed_load.require("presentation.ui.widgets.text")
+local wtbutton = timed_load.require("presentation.ui.widgets.button.text")
 
-local helpers = timed_load:require("helpers")
+local helpers = timed_load.require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local setmetatable = setmetatable
 local os = os

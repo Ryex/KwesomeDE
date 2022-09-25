@@ -52,9 +52,9 @@
 --@author Manoel Campos da Silva Filho
 local xml2lua = {_VERSION = "1.5-2"}
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local XmlParser = timed_load:require("helpers.xml.parser")
+local XmlParser = timed_load.require("helpers.xml.parser")
 
 ---Recursivelly prints a table in an easy-to-ready format
 --@param tb The table to be printed

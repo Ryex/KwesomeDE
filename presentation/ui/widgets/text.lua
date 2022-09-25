@@ -8,9 +8,9 @@ local gstring = require("gears.string")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local helpers = timed_load:require("helpers")
+local helpers = timed_load.require("helpers")
 local setmetatable = setmetatable
 local tostring = tostring
 local string = string

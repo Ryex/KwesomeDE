@@ -9,9 +9,9 @@ local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
 
-local timed_load = require('timed_load')
+local timed_load = require('helpers.timed_load')
 
-local dbus_proxy = timed_load:require("services.dbus_proxy")
+local dbus_proxy = timed_load.require("services.dbus_proxy")
 local pairs = pairs
 
 local bluetooth = { }
