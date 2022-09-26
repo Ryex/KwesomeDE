@@ -3,6 +3,7 @@ local Gio = lgi.Gio
 local Glib = lgi.GLib
 local awful = require("awful")
 local gtimer = require("gears.timer")
+local debugh = require("helpers.debug")
 local tonumber = tonumber
 local tostring = tostring
 local ipairs = ipairs
@@ -188,6 +189,7 @@ end
 
 function _filesystem.read_file_uri(uri, callback)
     local gfile = Gio.File.new_for_uri(uri)
+    debugh.log("DEBUG [helpers.filesystem] | read_file_uri %s", uri)
     gfile:load_contents_async(nil, function(file, task, c)
         local content = gfile:load_contents_finish(task)
         if content == nil then

@@ -7,6 +7,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 
 local timed_load = require('helpers.timed_load')
+local debugh = require("helpers.debug")
 
 local widgets = timed_load.require("presentation.ui.widgets")
 local weather_daemon = timed_load.require("daemons.web.weather")
@@ -365,7 +366,7 @@ local function new(args)
         stack:raise_widget(missing_credentials_text)
     end)
 
-    weather_daemon:connect_signal("weather", function(self, result, units)
+    weather_daemon:connect_signal("weather_forcast", function(self, result, units)
         spinning_circle.children[1]:abort()
 
         hours:reset()
@@ -455,6 +456,34 @@ local function new(args)
 
             daily_forecast_widget:add(day_forecast)
         end
+    end)
+
+    weather_daemon:connect_signal("weather_current", function(self, result, units)
+
+        debugh.log("DEBUG [ui.panels.info.weather] | weather_current")
+        debugh.dump("weather_current results", result)
+
+        spinning_circle.children[1]:abort()
+
+        hours:reset()
+        temperatures:reset()
+        hourly_forecast_graph:clear()
+        hourly_forecast_graph_border:clear()
+        daily_forecast_widget:reset()
+        collectgarbage("collect")
+
+        stack:raise_widget(weather_widget)
+
+        local weather = result.main
+        local wind = result.wind
+        local desc = result.weather[1]
+        icon:set_text(icon_map[desc.icon].icon)
+        current_weather_widget:get_children_by_id("temp")[1]:set_text(gen_temperature_str(weather.temp, "%.0f", args.both_units_widget, units))
+        current_weather_widget:get_children_by_id("feels_like_temp")[1]:set_text("Feels like " .. gen_temperature_str(weather.feels_like, "%.0f", false, units))
+        current_weather_widget:get_children_by_id("description")[1]:set_text(desc.description)
+        current_weather_widget:get_children_by_id("wind")[1]:set_markup("Wind: " .. "<b>" .. wind.speed .. "m/s (" .. to_direction(wind.deg) .. ")</b>")
+        current_weather_widget:get_children_by_id("humidity")[1]:set_markup("Humidity: " .. "<b>" .. weather.humidity .. "%</b>")
+
     end)
 
     return stack

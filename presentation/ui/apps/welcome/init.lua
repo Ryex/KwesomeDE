@@ -255,24 +255,24 @@ local function weather_page(on_next_pressed, on_previous_pressed)
         text_color = beautiful.colors.on_background,
     }
 
-    local coordinate_x_prompt = widgets.prompt {
+    local lat_prompt = widgets.prompt {
         forced_width = dpi(250),
         forced_height = dpi(50),
         reset_on_stop = false,
         prompt = "Lat: ",
-        text = weather_daemon:get_coordinate_x() or "",
+        text = weather_daemon:get_lat() or "",
         icon_font = beautiful.location_dot_icon.font,
         icon = beautiful.location_dot_icon.icon,
         icon_color = beautiful.colors.on_background,
         text_color = beautiful.colors.on_background,
     }
 
-    local coordinate_y_prompt = widgets.prompt {
+    local coordinate_lon_prompt = widgets.prompt {
         forced_width = dpi(250),
         forced_height = dpi(50),
         reset_on_stop = false,
         prompt = "Lon: ",
-        text = weather_daemon:get_coordinate_y() or "",
+        text = weather_daemon:get_coordinate_lon() or "",
         icon_font = beautiful.location_dot_icon.font,
         icon = beautiful.location_dot_icon.icon,
         icon_color = beautiful.colors.on_background,
@@ -313,11 +313,10 @@ local function weather_page(on_next_pressed, on_previous_pressed)
         size = 13,
         text = "Next",
         on_press = function()
-            print("WELCOME [weather]: nb on_press")
             weather_daemon:set_unit(unit_dropdown:get_value())
             weather_daemon:set_api_key(api_key_prompt:get_text())
-            weather_daemon:set_coordinate_x(coordinate_x_prompt:get_text())
-            weather_daemon:set_coordinate_y(coordinate_y_prompt:get_text())
+            weather_daemon:set_lat(lat_prompt:get_text())
+            weather_daemon:set_coordinate_lon(coordinate_lon_prompt:get_text())
             weather_daemon:refresh()
             on_next_pressed()
         end,
@@ -350,13 +349,13 @@ local function weather_page(on_next_pressed, on_previous_pressed)
                         widget = wibox.container.place,
                         halign = "center",
                         valign = "center",
-                        coordinate_x_prompt.widget,
+                        lat_prompt.widget,
                     },
                     {
                         widget = wibox.container.place,
                         halign = "center",
                         valign = "center",
-                        coordinate_y_prompt.widget,
+                        coordinate_lon_prompt.widget,
                     },
                     {
                         widget = wibox.container.place,
