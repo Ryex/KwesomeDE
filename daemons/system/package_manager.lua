@@ -8,6 +8,7 @@ local gobject = require("gears.object")
 local gtable = require("gears.table")
 
 local timed_load = require('helpers.timed_load')
+local debugh = require("helpers.debug")
 
 local helpers = timed_load.require("helpers")
 
@@ -22,9 +23,9 @@ local function apt(self)
 end
 
 local function pacman(self)
-    awful.spawn.easy_async_with_shell("sudo pacman -Qq | wc -l", function(packages_count)
+    awful.spawn.easy_async_with_shell("pacman -Qq | wc -l", function(packages_count)
         packages_count = packages_count:gsub('^%s*(.-)%s*$', '%1')
-        awful.spawn.easy_async_with_shell("sudo pacman -Qu | wc -l", function(outdated_package_count)
+        awful.spawn.easy_async_with_shell("pacman -Qu | wc -l", function(outdated_package_count)
             outdated_package_count = outdated_package_count:gsub('^%s*(.-)%s*$', '%1')
             self:emit_signal("update", packages_count, outdated_package_count)
         end)
@@ -37,6 +38,7 @@ local function new()
 
     awful.spawn.easy_async_with_shell('lsb_release -a | grep "Distributor ID:"', function(stdout)
         local distro = helpers.string.trim(stdout:match("Distributor ID:(.*)"))
+        debugh.log("DEBUG [daemons.system.package_manager] | new spawn lsb_release -> %s", distro)
         if distro == "Arch" or distro == "ManjaroLinux" then
             pacman(ret)
         elseif distro == "Ubuntu" or distro == "Debian" or distro == "PopOS" then
