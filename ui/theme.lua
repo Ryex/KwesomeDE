@@ -376,6 +376,27 @@ local function icons()
     end
 end
 
+local function pfp(default)
+    local gears = require("gears")
+    local pfp_paths = {
+    	os.getenv("HOME") .. "/.face",
+    	"/var/lib/AccountService/icons/" .. os.getenv("USER")
+    }
+    local face = default
+    for _, path in pairs(pfp_paths) do
+        local f = io.open(path)
+        if f then
+          	f:close()
+          	local img = gears.surface.load_uncached(path)
+          	if img ~= nil then
+            		face = path
+            		break
+          	end
+        end
+    end
+    return face
+end
+
 local function assets()
     local assets_folder = filesystem.filesystem.get_awesome_config_dir("assets/images")
     theme.overview = gsurface(assets_folder .. "overview.png")

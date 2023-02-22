@@ -1,6 +1,7 @@
 #! /bin/bash
 SOURCE=${BASH_SOURCE[0]}
-LOC=$(dirname $(realpath  $SOURCE))
+LOC=$(realpath "$(dirname $(realpath $SOURCE))/..")
+echo $LOC
 CONFIG=$LOC/rc.lua
 
 # Save the current session so persistent won't try to restore some previous session
@@ -9,7 +10,7 @@ awesome-client 'require("daemons.system.persistent"):save()'
 sleep 1.5
 
 echo "Started Xephyer on :1"
-Xephyr -br -ac -noreset -screen 1920x1080 :1 &
+Xephyr -br -ac -noreset -screen 1280x600 :1 &
 XEPHYER_PID=$!
 DISPLAY=:1
 
@@ -21,7 +22,7 @@ echo "Xephyr live on $DISPLAY PID=$XEPHYER_PID"
 
 echo "Starting awesome on $DISPLAY using: $CONFIG"
 echo
-awesome -c ~/.config/awesome/rc-debug.lua
+awesome -c $LOC/rc-debug.lua
 echo
 echo "awesome exitied - killing Xephyer:"
 kill $XEPHYER_PID

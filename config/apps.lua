@@ -165,7 +165,7 @@ local function new()
         run_or_raise = false
     })
     ret:new("kotatogram", "t", "kotatogram-desktop", "KotatogramDesktop")
-    ret:new("discord", "d", "discocss", "discord")
+    ret:new("discord", "d", "com.discordapp.Discord", "discord")
     ret:new("ncmpcpp", "n", "kitty --class mopidy ncmpcpp", "mopidy")
     ret:new("spotify", "s", "spotify", "Spotify")
     ret:new("openrgb", "o", "openrgb --server --gui", "openrgb")
