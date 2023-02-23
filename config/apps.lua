@@ -159,7 +159,7 @@ local function new()
     gtable.crush(ret, apps, true)
 
     ret:new("qutebrowser", "q", "qutebrowser", "qutebrowser")
-    ret:new("vivaldi", "b", "vivaldi-stable", "Vivaldi-stable")
+    ret:new("firefox", "b", "firefox", "Firefox")
     ret:new("vscode", "e", "code", "Code")
     ret:new("lazygit", "g", "kitty --class gitqlient lazygit", "gitqlient", {
         run_or_raise = false
@@ -168,8 +168,8 @@ local function new()
     ret:new("discord", "d", "com.discordapp.Discord", "discord")
     ret:new("ncmpcpp", "n", "kitty --class mopidy ncmpcpp", "mopidy")
     ret:new("spotify", "s", "spotify", "Spotify")
-    ret:new("openrgb", "o", "openrgb --server --gui", "openrgb")
-    ret:new("artemis", "a", "artemis", "artemis.ui.exe")
+    -- ret:new("openrgb", "o", "openrgb", "openrgb")
+    -- ret:new("artemis", "a", "artemis", "artemis.ui.exe")
     ret:new("ranger", "f", "kitty --class ranger ranger", "ranger", {
         run_or_raise = false
     })
