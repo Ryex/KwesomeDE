@@ -10,7 +10,7 @@ awesome-client 'require("daemons.system.persistent"):save()'
 sleep 1.5
 
 echo "Started Xephyer on :1"
-Xephyr -br -ac -noreset -screen 1280x600 :1 &
+Xephyr -br -ac -noreset -screen 1280x800 :1 &
 XEPHYER_PID=$!
 DISPLAY=:1
 
