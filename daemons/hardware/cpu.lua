@@ -3,6 +3,7 @@
 -- @copyright 2021-2022 Kasper24
 -------------------------------------------
 local awful = require("awful")
+local naughty = require("naughty")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gstring = require("gears.string")
@@ -17,36 +18,39 @@ local instance = nil
 local function update(self)
     awful.spawn.easy_async_with_shell(
         [[ grep '^cpu.' /proc/stat; ps -eo '%p|%c|%C|' -o "%mem" -o '|%a' --sort=-%cpu | head -11 | tail -n +2 ]],
+        ---@param stdout string
         function(stdout)
             local processes = {}
 
             local i = 1
             local j = 1
             for line in stdout:gmatch("[^\r\n]+") do
-                if line:find("cpu", 1, 3) then
+                if line:find("^cpu") then
                     local core = gobject {}
 
                     local name, user, nice, system, idle, iowait, irq, softirq, steal, _, _ = line:match(
                         "(%w+)%s+(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)")
 
-                    local total = user + nice + system + idle + iowait + irq + softirq + steal
+                    if user ~= nil then
+                        local total = user + nice + system + idle + iowait + irq + softirq + steal
 
-                    local diff_idle = idle - tonumber(core["idle_prev"] == nil and 0 or core["idle_prev"])
-                    local diff_total = total - tonumber(core["total_prev"] == nil and 0 or core["total_prev"])
-                    local diff_usage = (1000 * (diff_total - diff_idle) / diff_total + 5) / 10
+                        local diff_idle = idle - tonumber(core["idle_prev"] == nil and 0 or core["idle_prev"])
+                        local diff_total = total - tonumber(core["total_prev"] == nil and 0 or core["total_prev"])
+                        local diff_usage = (1000 * (diff_total - diff_idle) / diff_total + 5) / 10
 
-                    core["total_prev"] = total
-                    core["idle_prev"] = idle
-                    core["diff_usage"] = diff_usage
-                    core["name"] = name:upper()
+                        core["total_prev"] = total
+                        core["idle_prev"] = idle
+                        core["diff_usage"] = diff_usage
+                        core["name"] = name:upper()
 
-                    i = i + 1
+                        i = i + 1
 
-                    if self._private.cores[i] == nil then
-                        self._private.cores[i] = core
-                        self:emit_signal("core", core)
-                    else
-                        self._private.cores[i]:emit_signal("update", core)
+                        if self._private.cores[i] == nil then
+                            self._private.cores[i] = core
+                            self:emit_signal("core", core)
+                        else
+                            self._private.cores[i]:emit_signal("update", core)
+                        end
                     end
                 else
                     local process = gobject {}
