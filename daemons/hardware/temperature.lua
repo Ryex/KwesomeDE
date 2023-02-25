@@ -17,7 +17,7 @@ local function new()
     gtable.crush(ret, temperature, true)
 
     gtimer.poller {
-        timeout = 15,
+        timeout = 30,
         callback = function()
             awful.spawn.easy_async("sensors", function(stdout)
                 local temp = string.match(stdout, "Tctl:%s*+(%d+)")

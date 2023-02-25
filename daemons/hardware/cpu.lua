@@ -112,7 +112,7 @@ local function new()
     local first_time = true
 
     gtimer.poller {
-        timeout = 15,
+        timeout = 30,
         callback = function()
             if first_time then
                 update(ret)
