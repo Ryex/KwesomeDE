@@ -14,6 +14,262 @@ local capi = {
     client = client
 }
 
+local apps = {
+    kitty = {
+        command = "kitty",
+        class = "kitty"
+    },
+    alacritty = {
+        command = "alacritty",
+        class = "Alacritty"
+    },
+    termite = {
+        command = "termite",
+        class = "Termite"
+    },
+    urxvt = {
+        command = "urxvt",
+        class = "URxvt"
+    },
+    st = {
+        command = "st",
+        class = "st"
+    },
+    st_256color = {
+        command = "st-256color",
+        class = "st-256color"
+    },
+    htop = {
+        command = "alacritty --class htop htop",
+        class = "htop"
+    },
+    nm_connection_editor = {
+        command = "nm-connection-editor",
+        class = "Nm-connection-editor"
+    },
+    network_manager_dmenu = {
+        name = "network",
+        command = "networkmanager_dmenu",
+        class = "Rofi"
+    },
+    pavucontrol = {
+        command = "pavucontrol",
+        class = "Pavucontrol"
+    },
+    blueman_manager = {
+        name = "bluetooth",
+        command = "blueman-manager",
+        class = "Blueman-manager"
+    },
+    file_roller = {
+        command = "file-roller",
+        class = "File-roller"
+    },
+    lxappearance = {
+        command = "Lxappearance",
+        class = "lxappearance"
+    },
+    nvidia_settings = {
+        command = "nvidia-settings",
+        class = "Nvidia-settings"
+    },
+    wpgtk = {
+        command = "wpg",
+        class = "Wpg"
+    },
+    feh = {
+        command = "feh",
+        class = "feh"
+    },
+    eye_of_gnome = {
+        command = "eog",
+        class = "Eog"
+    },
+    gwenview = {
+        command = "gwenview",
+        class = "gwenview"
+    },
+    flameshot_gui = {
+        command = "flameshot gui -p ~/Pictures",
+        class = "flameshot"
+    },
+    flameshot = {
+        command = "flameshot full -c -p ~/Pictures",
+        class = "flameshot"
+    },
+    gnome_calculator = {
+        command = "gnome-calculator",
+        class = "Gnome-calculator"
+    },
+    gnome_system_monitor = {
+        name = "system-monitor",
+        command = "gnome-system-monitor",
+        class = "Gnome-system-monitor"
+    },
+    notepadqq = {
+        command = "notepadqq",
+        class = "Notepadqq"
+    },
+    ranger = {
+        command = "alacritty --class ranger ranger",
+        class = "ranger"
+    },
+    nemo = {
+        command = "nemo",
+        class = "Nemo"
+    },
+    thunar = {
+        class = "Thunar"
+    },
+    files = {
+        class = "files"
+    },
+    firefox = {
+        command = "firefox",
+        class = "firefox"
+    },
+    vivaldi = {
+        command = "vivaldi-stable",
+        class = "Vivaldi-stable"
+    },
+    chromium = {
+        class = "Chromium"
+    },
+    emacs = {
+        class = "Emacs"
+    },
+    vim = {
+        class = "vim"
+    },
+    vscode = {
+        command = "code",
+        class = "Code"
+    },
+    android_studio = {
+        command = "android-studio",
+        class = "jetbrains-studio"
+    },
+    qt_creator = {
+        command = "qtcreator",
+        class = "QtCreator"
+    },
+    lazygit = {
+        command = "alacritty --class gitqlient lazygit",
+        class = "gitqlient"
+    },
+    gitui = {
+        command = "alacritty --class gitqlient gitui",
+        class = "gitqlient"
+    },
+    gitkraken = {
+        command = "gitkraken",
+        class = "GitKraken"
+    },
+    discord = {
+        command = "discocss",
+        class = "discord"
+    },
+    telegram = {
+        command = "kotatogram-desktop",
+        class = "KotatogramDesktop"
+    },
+    kotatogram = {
+        command = "telegram-desktop",
+        class = "TelegramDesktop"
+    },
+    spotify = {
+        command = "spotify",
+        class = "Spotify"
+    },
+    ncmpcpp = {
+        command = "alacritty --class mopidy ncmpcpp",
+        class = "mopidy"
+    },
+    steam = {
+        command = "steam",
+        class = "Steam"
+    },
+    lutris = {
+        command = "lutris",
+        class = "Lutris"
+    },
+    heroic = {
+        command = "heroic",
+        class = "heroic"
+    },
+    rockstar_games_launcer = {
+        name = "Rockstar Games Launcher"
+    },
+    rocket_league = {
+        class = "steam_app_252950"
+    },
+    gta_v = {
+        name = "Grand Theft Auto V"
+    },
+    openrgb = {
+        command = "openrgb",
+        class = "openrgb"
+    },
+    artemis = {
+        command = "artemis",
+        class = "artemis.ui.exe"
+    },
+    qbittorrent = {
+        command = "qbittorrent",
+        class = "qBittorrent"
+    },
+    webtorrent = {
+        class = "WebTorrent"
+    },
+    virtualbox = {
+        command = "virtualbox",
+        class = "VirtualBox Manager"
+    },
+    qemui = {
+        class = "Qemu-system-x86_64"
+    },
+    thunderbird = {
+        command = "thunderbird",
+        class = "Thunderbird"
+    },
+    bitwarden = {
+        command = "bitwarden",
+        class = "Bitwarden"
+    },
+    keepassxc = {
+        command = "keepassxc",
+        class = "KeePassXC"
+    },
+    libreoffice_writer = {
+        command = "libreoffice",
+        class = "libreoffice-writer"
+    },
+    libreoffice_impress = {
+        command = "libreoffice",
+        class = "libreoffice-impress"
+    },
+    libreoffice_calc = {
+        command = "libreoffice",
+        class = "libreoffice-calc"
+    },
+    screenshot = {
+        command = "",
+        class = "Screenshot"
+    },
+    record = {
+        command = "",
+        class = "Record"
+    },
+    theme = {
+        command = "",
+        class = "Theme"
+    },
+    xfce4_settings_manager = {
+        command = "xfce4-settings-manager",
+        class = "Xfce4-settings-manager"
+    }
+}
+
 require("awful.autofocus")
 
 capi.client.connect_signal("request::manage", function(client)

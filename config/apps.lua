@@ -161,19 +161,19 @@ local function new()
     ret:new("qutebrowser", "q", "qutebrowser", "qutebrowser")
     ret:new("firefox", "b", "firefox", "Firefox")
     ret:new("vscode", "e", "code", "Code")
-    ret:new("lazygit", "g", "kitty --class gitqlient lazygit", "gitqlient", {
+    ret:new("gitui", "g", "alacritty --class gitqlient gitui", "gitqlient", {
         run_or_raise = false
     })
     ret:new("kotatogram", "t", "kotatogram-desktop", "KotatogramDesktop")
     ret:new("discord", "d", "com.discordapp.Discord", "discord")
-    ret:new("ncmpcpp", "n", "kitty --class mopidy ncmpcpp", "mopidy")
+    ret:new("ncmpcpp", "n", "alacritty --class mopidy ncmpcpp", "mopidy")
     ret:new("spotify", "s", "spotify", "Spotify")
     -- ret:new("openrgb", "o", "openrgb", "openrgb")
     -- ret:new("artemis", "a", "artemis", "artemis.ui.exe")
-    ret:new("ranger", "f", "kitty --class ranger ranger", "ranger", {
+    ret:new("ranger", "f", "alacritty --class ranger ranger", "ranger", {
         run_or_raise = false
     })
-    ret:new("kitty", "Return", "kitty", "kitty", {
+    ret:new("alacritty", "Return", "alacritty", "alacritty", {
         launch_modifiers = {keys.mod},
         run_or_raise = false,
         geometry = terminal_gemotery(),
