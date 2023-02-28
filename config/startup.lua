@@ -15,12 +15,12 @@ local function run_programs()
     helpers.run.run_once_grep("blueman-applet")
     helpers.run.run_once_grep("parcellite")
     helpers.run.run_once_grep("kdeconnect-indicator")
-    helpers.run.run_once_grep("mopidy")
-    helpers.run.run_once_grep("bitwarden-desktop", "bitwarden")
-    gtimer.start_new(10, function()
-        helpers.run.run_once_grep("openrgb --server --gui")
-        return false
-    end)
+    -- helpers.run.run_once_grep("mopidy")
+    -- helpers.run.run_once_grep("bitwarden-desktop", "bitwarden")
+    -- gtimer.start_new(10, function()
+    --     helpers.run.run_once_grep("openrgb --server --gui")
+    --     return false
+    -- end)
 end
 
 local function configure_keyboard()
@@ -32,9 +32,9 @@ local function configure_keyboard()
         callback = function()
             awful.spawn("xset r rate 200 30", false)
 
-            gtimer.delayed_call(function()
-                awful.spawn("setxkbmap -layout us,il -variant , -option grp:alt_shift_toggle", false)
-            end)
+        -- gtimer.delayed_call(function()
+        --     awful.spawn("setxkbmap -layout us,il -variant , -option grp:alt_shift_toggle", false)
+        -- end)
 
             awful.spawn.with_shell([[
         xkbcomp -xkb "$DISPLAY" - | sed 's#key <CAPS>.*#key <CAPS> {\
@@ -51,6 +51,7 @@ local function configure_keyboard()
 end
 
 local function configure_display()
+    -- awful.spawn("xrandr --output DP-2 --gamma 0.8", false)
     awful.spawn("xset s off", false)
     awful.spawn("xset -dpms", false)
     awful.spawn("xset s noblank", false)
