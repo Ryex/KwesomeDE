@@ -13,7 +13,7 @@ local instance = nil
 
 function redshift:turn_on(skip_check)
     local function turn_on()
-        awful.spawn.with_shell("redshift -l 0:0 -t 4500:4500 -r &>/dev/null &")
+        awful.spawn.with_shell("bash -c \"redshift -l 0:0 -t 4500:4500 -r &>/dev/null &\"")
         helpers.settings["redshift.enabled"] = true
     end
 
@@ -30,8 +30,8 @@ end
 
 function redshift:turn_off(skip_check)
     local function turn_off()
-        awful.spawn.with_shell("redshift -x && pkill redshift && killall redshift")
-        helpers.settings["redshift.enabled"]= false
+        awful.spawn.with_shell("bash -c \"redshift -x && pkill redshift && killall redshift\"")
+        helpers.settings["redshift.enabled"] = false
     end
 
     if skip_check ~= true then

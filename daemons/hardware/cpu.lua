@@ -17,7 +17,7 @@ local instance = nil
 
 local function update(self)
     awful.spawn.easy_async_with_shell(
-        [[ grep '^cpu.' /proc/stat; ps -eo '%p|%c|%C|' -o "%mem" -o '|%a' --sort=-%cpu | head -11 | tail -n +2 ]],
+        [[ bash -c "grep '^cpu.' /proc/stat; ps -eo '%p|%c|%C|' -o "%mem" -o '|%a' --sort=-%cpu | head -11 | tail -n +2" ]],
         ---@param stdout string
         function(stdout)
             local processes = {}

@@ -555,7 +555,7 @@ ruled.client.connect_signal("request::rules", function()
             -- Artemis first open a splash loading window before opening the main window
             if c.name ~= " " then
                 c:connect_signal("unmanage", function()
-                    awful.spawn.with_shell("pkill -f Artemis.UI.exe && pkill -f Artemis.ui.exe")
+                    awful.spawn.with_shell("bash -c \"pkill -f Artemis.UI.exe && pkill -f Artemis.ui.exe\"")
                 end)
             end
         end

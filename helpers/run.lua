@@ -12,7 +12,7 @@ function _run.run_once_pgrep(findme, cmd)
 end
 
 function _run.run_once_ps(findme, cmd)
-    awful.spawn.easy_async_with_shell(string.format("ps -C %s|wc -l", findme), function(stdout)
+    awful.spawn.easy_async_with_shell(string.format("bash -c \"ps -C %s|wc -l\"", findme), function(stdout)
         if tonumber(stdout) ~= 2 then
             awful.spawn(cmd, false)
         end
@@ -21,7 +21,7 @@ end
 
 function _run.run_once_grep(command, findme)
     findme = findme or command
-    awful.spawn.easy_async_with_shell(string.format("ps aux | grep '%s' | grep -v 'grep'", findme), function(stdout)
+    awful.spawn.easy_async_with_shell(string.format("bash -c \"ps aux | grep '%s' | grep -v 'grep'\"", findme), function(stdout)
         if stdout == "" or stdout == nil then
             awful.spawn(command, false)
         end
@@ -35,14 +35,14 @@ function _run.is_running(command, callback)
 end
 
 function _run.is_pid_running(pid, callback)
-    awful.spawn.easy_async_with_shell(string.format("ps -o pid= -p %s", pid), function(stdout)
+    awful.spawn.easy_async_with_shell(string.format("bash -c \"ps -o pid= -p %s\"", pid), function(stdout)
         -- If empty, program is not running
         callback(stdout ~= "")
     end)
 end
 
 function _run.is_installed(program, callback)
-    awful.spawn.easy_async(string.format("which %s", program), function(stdout, stderr)
+    awful.spawn.easy_async(string.format("bash -c \"which %s\"", program), function(stdout, stderr)
         callback(stderr == "")
     end)
 end

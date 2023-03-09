@@ -106,7 +106,7 @@ function source_output:set_volume(volume)
 end
 
 local function on_default_device_changed(self)
-    awful.spawn.easy_async_with_shell([[pactl info | grep "Default Sink:\|Default Source:"]], function(stdout)
+    awful.spawn.easy_async_with_shell([[pactl info | grep -E "Default Sink:\|Default Source:"]], function(stdout)
         for line in stdout:gmatch("[^\r\n]+") do
             local default_device_name = line:match(": (.*)")
             local type = line:match("Default Sink") and "sinks" or "sources"
@@ -126,8 +126,8 @@ local function on_default_device_changed(self)
 end
 
 local function get_devices(self)
-    awful.spawn.easy_async_with_shell([[pactl list sinks | grep "Sink #\|Name:\|Description:\|Mute:\|Volume: ";
-        pactl list sources | grep "Source #\|Name:\|Description:\|Mute:\|Volume:"]], function(stdout)
+    awful.spawn.easy_async_with_shell([[pactl list sinks | grep -E "Sink #\|Name:\|Description:\|Mute:\|Volume: ";
+        pactl list sources | grep -E "Source #\|Name:\|Description:\|Mute:\|Volume:"]], function(stdout)
         local device = gobject {}
         for line in stdout:gmatch("[^\r\n]+") do
             if line:match("Sink") or line:match("Source") then
@@ -158,8 +158,8 @@ end
 
 local function get_applications(self)
     awful.spawn.easy_async_with_shell(
-        [[pactl list sink-inputs | grep "Sink Input #\|application.name = \|application.icon_name = \|Mute:\|Volume: ";
-        pactl list source-outputs | grep "Source Output #\|application.name = \|application.icon_name = \|Mute:\|Volume: "]],
+        [[pactl list sink-inputs | grep -E "Sink Input #\|application.name = \|application.icon_name = \|Mute:\|Volume: ";
+        pactl list source-outputs | grep -E "Source Output #\|application.name = \|application.icon_name = \|Mute:\|Volume: "]],
         function(stdout)
             local application = gobject {}
             for line in stdout:gmatch("[^\r\n]+") do

@@ -190,14 +190,14 @@ local function generate_colorscheme(self, wallpaper, reset, light)
 end
 
 local function reload_gtk()
-    local refresh_gsettings = [[ gsettings set org.gnome.desktop.interface \
+    local refresh_gsettings = [[ bash -c "gsettings set org.gnome.desktop.interface \
 gtk-theme '%s' && sleep 0.1 && gsettings set \
-org.gnome.desktop.interface gtk-theme '%s'
+org.gnome.desktop.interface gtk-theme '%s'"
 ]]
 
-    local refresh_xfsettings = [[ xfconf-query -c xsettings -p /Net/ThemeName -s \
+    local refresh_xfsettings = [[ bash -c "xfconf-query -c xsettings -p /Net/ThemeName -s \
 '%s' && sleep 0.1 && xfconf-query -c xsettings -p \
-/Net/ThemeName -s '%s'
+/Net/ThemeName -s '%s'"
 ]]
 
     local file = filesystem.file.new_for_path(GTK_CONFIG_FILE_PATH)
@@ -673,7 +673,7 @@ local function we_wallpaper(self, screen)
     end
 
     local id = get_we_wallpaper_id(self:get_active_wallpaper())
-    local cmd = string.format("cd %s && ./linux-wallpaperengine --assets-dir %s %s --fps %s --class linux-wallpaperengine --x %s --y %s --width %s --height %s",
+    local cmd = string.format("bash -c \"cd %s && ./linux-wallpaperengine --assets-dir %s %s --fps %s --class linux-wallpaperengine --x %s --y %s --width %s --height %s\"",
         WE_PATH,
         self:get_wallpaper_engine_assets_folder(),
         self:get_wallpaper_engine_workshop_folder() .. "/" .. id,
@@ -925,7 +925,7 @@ end
 
 function theme:preview_we_wallpaper(we_wallpaper, geometry)
     local id = get_we_wallpaper_id(we_wallpaper)
-    local cmd = string.format("cd %s && ./linux-wallpaperengine --assets-dir %s %s --class linux-wallpaperengine-preview --fps %s --x %s --y %s",
+    local cmd = string.format("bash -c \"cd %s && ./linux-wallpaperengine --assets-dir %s %s --class linux-wallpaperengine-preview --fps %s --x %s --y %s\"",
         WE_PATH,
         self:get_wallpaper_engine_assets_folder(),
         self:get_wallpaper_engine_workshop_folder() .. "/" .. id,

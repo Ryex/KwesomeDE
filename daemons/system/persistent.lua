@@ -229,7 +229,7 @@ function persistent:save()
     self:save_clients()
 
     local json_settings = json.encode(self.settings)
-    awful.spawn.with_shell(string.format("mkdir -p %s && echo '%s' > %s", PATH, json_settings, DATA_PATH))
+    awful.spawn.with_shell(string.format("bash -c \"mkdir -p %s && echo '%s' > %s\"", PATH, json_settings, DATA_PATH))
 end
 
 function persistent:restore()
