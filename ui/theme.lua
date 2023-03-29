@@ -316,6 +316,8 @@ local function icons()
         ["notepadqq"] = theme.icons.note,
         ["nvidiasettings"] = theme.icons.nvidia,
         ["nvim"] = theme.icons.vim,
+        ["neovide"] = theme.icons.vim,
+        ["lunarvide"] = theme.icons.vim,
         ["obs"] = theme.icons.video,
         ["openrgb"] = theme.icons.lights_holiday,
         ["parcellite"] = theme.icons.clipboard,
